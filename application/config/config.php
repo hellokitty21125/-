@@ -23,9 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$baseUrl = str_replace('\\','/',dirname($_SERVER['SCRIPT_NAME']));
-$baseUrl = trim($baseUrl,'/');
-$config['base_url'] = empty($baseUrl) ? '/' : "/$baseUrl/";
+$config['base_url'] = '/lendoo-web';
 
 /*
 |--------------------------------------------------------------------------
