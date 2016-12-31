@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>发布商品</title>
+  <title><?php echo $title;?></title>
   <meta name="description" content="这是一个form页面">
   <meta name="keywords" content="form">
   <meta name="viewport" content="width=device-width, initial-scale=1">

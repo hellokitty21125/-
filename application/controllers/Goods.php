@@ -8,7 +8,8 @@ use \LeanCloud\File;
 class Goods extends BaseController {
 	
 	public function add() {
-		$this->load->view('goods_add');
+		$data['title'] = '添加商品';
+		$this->load->view('goods_add', $data);
 	}
 	
 	public function save() {

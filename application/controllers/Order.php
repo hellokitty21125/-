@@ -13,6 +13,7 @@ class Order extends BaseController {
 		$query->descend("createdAt");
 		$result = $query->find();
 		$data['result'] = $result;
+		$data['title'] = '订单列表';
 		$this->load->view('order_list', $data);
 	}
 }
