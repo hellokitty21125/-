@@ -1,4 +1,4 @@
-<?php $this->load->view('header');?>
+<?php $this->load->view('template/header');?>
 <!-- content start -->
 <div class="admin-content">
   <div class="admin-content-body">
@@ -165,4 +165,4 @@
   </footer>
 </div>
 <!-- content end -->
-<?php $this->load->view('footer');?>
+<?php $this->load->view('template/footer');?>
