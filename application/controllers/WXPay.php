@@ -11,7 +11,7 @@ class WXPay extends BaseController {
 // 		订单号应该是由小程序端传给服务端的，在用户下单时即生成，demo中取值是一个生成的时间戳
 		$input->SetOut_trade_no('1231231231');
 // 		费用应该是由小程序端传给服务端的，在用户下单时告知服务端应付金额，demo中取值是1，即1分钱
-		$input->SetTotal_fee("10");
+		$input->SetTotal_fee("1");
 		$input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
 		$input->SetTrade_type("JSAPI");
 // 		由小程序端传给服务端
@@ -20,7 +20,7 @@ class WXPay extends BaseController {
 		$order = WxPayApi::unifiedOrder($input);
 // 		json化返回给小程序端
 		header("Content-Type: application/json");
-                echo $this->getJsApiParameters($order);
+                echo json_encode($order);
 	}
         
         public function getJsApiParameters($UnifiedOrderResult)
