@@ -9,7 +9,7 @@ class WXPay extends BaseController {
 // 		文档提及的参数规范：商家名称-销售商品类目
 		$input->SetBody("灵动商城-手机");
 // 		订单号应该是由小程序端传给服务端的，在用户下单时即生成，demo中取值是一个生成的时间戳
-		$input->SetOut_trade_no('123123123');
+		$input->SetOut_trade_no('1231231230');
 // 		费用应该是由小程序端传给服务端的，在用户下单时告知服务端应付金额，demo中取值是1，即1分钱
 		$input->SetTotal_fee("1");
 		$input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
@@ -20,6 +20,26 @@ class WXPay extends BaseController {
 		$order = WxPayApi::unifiedOrder($input);
 // 		json化返回给小程序端
 		header("Content-Type: application/json");
-		echo json_encode($order);
+                echo $this->getJsApiParameters($order);
+	}
+        
+        public function getJsApiParameters($UnifiedOrderResult)
+	{
+		if(!array_key_exists("appid", $UnifiedOrderResult)
+		|| !array_key_exists("prepay_id", $UnifiedOrderResult)
+		|| $UnifiedOrderResult['prepay_id'] == "")
+		{
+			throw new WxPayException("参数错误");
+		}
+		$jsapi = new WxPayJsApiPay();
+		$jsapi->SetAppid($UnifiedOrderResult["appid"]);
+		$timeStamp = time();
+		$jsapi->SetTimeStamp("$timeStamp");
+		$jsapi->SetNonceStr(WxPayApi::getNonceStr());
+		$jsapi->SetPackage("prepay_id=" . $UnifiedOrderResult['prepay_id']);
+		$jsapi->SetSignType("MD5");
+		$jsapi->SetPaySign($jsapi->MakeSign());
+		$parameters = json_encode($jsapi->GetValues());
+		return $parameters;
 	}
 }
