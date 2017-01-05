@@ -9,9 +9,9 @@ class WXPay extends BaseController {
 // 		文档提及的参数规范：商家名称-销售商品类目
 		$input->SetBody("灵动商城-手机");
 // 		订单号应该是由小程序端传给服务端的，在用户下单时即生成，demo中取值是一个生成的时间戳
-		$input->SetOut_trade_no('1231231230');
+		$input->SetOut_trade_no('1231231231');
 // 		费用应该是由小程序端传给服务端的，在用户下单时告知服务端应付金额，demo中取值是1，即1分钱
-		$input->SetTotal_fee(10);
+		$input->SetTotal_fee("10");
 		$input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
 		$input->SetTrade_type("JSAPI");
 // 		由小程序端传给服务端
