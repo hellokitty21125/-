@@ -35,7 +35,7 @@ class WXPay extends BaseController {
 		$jsapi->SetAppid($UnifiedOrderResult["appid"]);
 		$timeStamp = time();
 		$jsapi->SetTimeStamp("$timeStamp");
-		$jsapi->SetNonceStr(WxPayApi::getNonceStr());
+		$jsapi->SetNonceStr($UnifiedOrderResult['nonce_str']);
 		$jsapi->SetPackage("prepay_id=" . $UnifiedOrderResult['prepay_id']);
 		$jsapi->SetSignType("MD5");
 		$jsapi->SetPaySign($jsapi->MakeSign());
