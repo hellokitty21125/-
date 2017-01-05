@@ -20,7 +20,7 @@ class WXPay extends BaseController {
 		$order = WxPayApi::unifiedOrder($input);
 // 		json化返回给小程序端
 		header("Content-Type: application/json");
-                echo json_encode($this->getJsApiParameters($order));
+                echo $this->getJsApiParameters($order);
 	}
         
         public function getJsApiParameters($UnifiedOrderResult)
