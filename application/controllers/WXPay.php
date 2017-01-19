@@ -15,7 +15,7 @@ class WXPay extends BaseController {
 		$input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
 		$input->SetTrade_type("JSAPI");
 		// 		由小程序端传给服务端
-		$input->SetOpenid($this->input()->post('openid'));
+		$input->SetOpenid($this->input->post('openid'));
 		// 		向微信统一下单，并返回order，它是一个array数组
 		$order = WxPayApi::unifiedOrder($input);
 		// 		json化返回给小程序端
