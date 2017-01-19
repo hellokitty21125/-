@@ -15,7 +15,7 @@ class WXPay extends BaseController {
 		$input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
 		$input->SetTrade_type("JSAPI");
 		// 		由小程序端传给服务端
-		$input->SetOpenid($this->getSession()->openid);
+		$input->SetOpenid($this->input()->post('openid'));
 		// 		向微信统一下单，并返回order，它是一个array数组
 		$order = WxPayApi::unifiedOrder($input);
 		// 		json化返回给小程序端
@@ -43,10 +43,10 @@ class WXPay extends BaseController {
 		return $parameters;
 	}
 	
-	private function getSession() {
+	public function getSession() {
 		$code = $this->input->post('code');
 		$url = 'https://api.weixin.qq.com/sns/jscode2session?appid='.WxPayConfig::APPID.'&secret='.WxPayConfig::APPSECRET.'&js_code='.$code.'&grant_type=authorization_code';
-		$response = json_decode(file_get_contents($url));
-		return $response;
+                header("Content-Type: application/json");
+                echo file_get_contents($url);
 	}
 }
