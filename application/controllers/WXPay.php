@@ -65,7 +65,8 @@ class WXPay extends BaseController {
 		$accessTokenObject = json_decode(file_get_contents('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.WxPayConfig::APPID.'&secret='.WxPayConfig::APPSECRET));
 		// 拼接微信服务端获取二维码需要的url，见文档https://mp.weixin.qq.com/debug/wxadoc/dev/api/qrcode.html
 		$url = 'https://api.weixin.qq.com/cgi-bin/wxaapp/createwxaqrcode?access_token=' . $accessTokenObject->access_token;
-		$json = '{"path": "pages/index/index", "width": 430}';
+		$uid = $this->input->get('uid');
+		$json = '{"path": "pages/index/index"' . $uid . ', "width": 430}';
 		$ch = curl_init();
 		//设置超时
 		curl_setopt($ch, CURLOPT_TIMEOUT, 60);
@@ -79,9 +80,9 @@ class WXPay extends BaseController {
 		curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,TRUE);
 		curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,2);//严格校验
 		//设置header
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-		//要求结果为字符串且输出到屏幕上
 		header('Content-Type: image/jpeg');
+		//要求结果为字符串且输出到屏幕上
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		//post提交方式
 		curl_setopt($ch, CURLOPT_POST, TRUE);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
