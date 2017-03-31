@@ -18,7 +18,7 @@
         <li><a href="#tab3">SEO 选项</a></li>
       </ul>
 
-          <form action="save" method="post">
+          <form action="save" method="post" enctype="multipart/form-data">
           	
 	          <div class="am-g am-margin-top">
 	            <div class="am-u-sm-4 am-u-md-2 am-text-right">
@@ -27,6 +27,7 @@
 	            <div class="am-u-sm-8 am-u-md-10">
 	                <div class="am-form-group am-form-icon">
 	                  <input type="input" value="http://img13.360buyimg.com/n4/s260x260_jfs/t889/319/780063454/143420/1699a5eb/55485c20N032c1bc2.jpg" name="avatar">
+                    <input type="file" name="avatarFile" />
 	                </div>
 	                <div class="am-form-group am-form-icon">
 	                  <input type="input" value="一款不一样的手机" name="title">

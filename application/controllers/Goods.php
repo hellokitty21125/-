@@ -13,25 +13,24 @@ class Goods extends BaseController {
 	}
 	
 	public function save() {
-		// get param
-		
+		// 获取参数
 		$avatar = $this->input->post('avatar');
-		$file = File::createWithUrl("avatar.jpg", $avatar);
-		
 		$title = $this->input->post('title');
-		
+		$this->load->library('upload');
+		// 图片上传
+		$file = File::createWithLocalFile($_FILES['avatarFile']['tmp_name'], $_FILES['avatarFile']['type']);
+		// 保存图片
+		$file->save();
 		// save to leanCloud
-		
-		$testObject = new Object("Goods");
-		
-		$testObject->set("title", $title);
-		$testObject->set("avatarFile", $file);
-		
+		$object = new Object("Goods");
+		$object->set("title", $title);
+		$object->set("avatar", $avatar);
+		$object->set("avatarFile", $file);
 		try {
-			$testObject->save();
-			echo "Save object success!";
+			$object->save();
+			echo "发布成功";
 		} catch (Exception $ex) {
-			echo "Save object fail!";
+			echo "操作失败";
 			var_dump($ex);
 		}
 	}
