@@ -46,7 +46,7 @@
 		<h1 style="color: #fff;">灵动云商</h1>
 		<p>手机买好货利器</p>
 		<p>
-			<button type="button" class="btn btn-success btn-lg popover-show" style="width: 256px; height: 60px" title="小程序" data-container="body" data-placement="bottom" data-toggle="popover" data-html="true" data-content="<img src='<?=base_url('assets/images/qrcode.png')?>' />">扫一扫</button>
+			<button type="button" class="btn btn-success btn-lg popover-show" style="width: 256px; height: 60px" title="小程序" data-container="body" data-placement="bottom" data-toggle="popover" data-html="true" data-trigger="hover focus click" data-content="<img src='<?=base_url('assets/images/qrcode.png')?>' />"><span class="glyphicon glyphicon-qrcode" style="margin-right: 5px;"></span> 扫一扫</button>
         </p>
 	</div>
 	<hr class="line"/>
