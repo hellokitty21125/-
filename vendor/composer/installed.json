@@ -115,5 +115,40 @@
             "theme",
             "web"
         ]
+    },
+    {
+        "name": "codeigniter/framework",
+        "version": "3.1.4",
+        "version_normalized": "3.1.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bcit-ci/CodeIgniter.git",
+            "reference": "873608df8be83420474e3cf9fc749a8ed12a6c09"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/bcit-ci/CodeIgniter/873608df8be83420474e3cf9fc749a8ed12a6c09.zip",
+            "reference": "873608df8be83420474e3cf9fc749a8ed12a6c09",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.4"
+        },
+        "require-dev": {
+            "mikey179/vfsstream": "1.1.*",
+            "phpunit/phpunit": "4.* || 5.*"
+        },
+        "suggest": {
+            "paragonie/random_compat": "Provides better randomness in PHP 5.x"
+        },
+        "time": "2017-03-20 15:51:08",
+        "type": "project",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "The CodeIgniter framework",
+        "homepage": "https://codeigniter.com"
     }
 ]

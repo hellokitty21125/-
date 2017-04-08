@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a087f74d454248a0d453ce5a647a9c3f",
-    "content-hash": "052be56c3748f3626cf442c04bf94565",
+    "hash": "823e10e019d93d7dc52d3b917f9a7c82",
+    "content-hash": "7281474e2f7cef83138b2809ada04f7c",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -46,6 +46,39 @@
                 "web"
             ],
             "time": "2017-01-08 21:03:57"
+        },
+        {
+            "name": "codeigniter/framework",
+            "version": "3.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bcit-ci/CodeIgniter.git",
+                "reference": "873608df8be83420474e3cf9fc749a8ed12a6c09"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/bcit-ci/CodeIgniter/873608df8be83420474e3cf9fc749a8ed12a6c09.zip",
+                "reference": "873608df8be83420474e3cf9fc749a8ed12a6c09",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "1.1.*",
+                "phpunit/phpunit": "4.* || 5.*"
+            },
+            "suggest": {
+                "paragonie/random_compat": "Provides better randomness in PHP 5.x"
+            },
+            "type": "project",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The CodeIgniter framework",
+            "homepage": "https://codeigniter.com",
+            "time": "2017-03-20 15:51:08"
         },
         {
             "name": "leancloud/leancloud-sdk",
