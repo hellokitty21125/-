@@ -23,7 +23,7 @@ class Client {
     /**
      * Client version
      */
-    const VERSION = '0.5.1';
+    const VERSION = '0.5.4';
 
     /**
      * API Endpoints for Regions
@@ -132,6 +132,7 @@ class Client {
         self::$defaultHeaders = array(
             'X-LC-Id' => self::$appId,
             'Content-Type' => 'application/json;charset=utf-8',
+            'Accept-Encoding' => 'gzip, deflate',
             'User-Agent'   => self::getVersionString()
         );
 
@@ -171,11 +172,12 @@ class Client {
     /**
      * Set API region
      *
-     * Available regions are "CN" and "US".
+     * Available regions are "CN", "US", "E1".
      *
      * @param string $region
      */
     public static function useRegion($region) {
+        $region = strtoupper($region);
         if (!isset(self::$api[$region])) {
             throw new \RuntimeException("Invalid API region: {$region}.");
         }
@@ -377,6 +379,8 @@ class Client {
         curl_setopt($req, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($req, CURLOPT_TIMEOUT, self::$apiTimeout);
         // curl_setopt($req, CURLINFO_HEADER_OUT, true);
+        // curl_setopt($req, CURLOPT_HEADER, true);
+        curl_setopt($req, CURLOPT_ENCODING, '');
         switch($method) {
             case "GET":
                 if ($data) {
@@ -403,6 +407,7 @@ class Client {
             error_log("[DEBUG] HEADERS {$reqId}:" . json_encode($headersList));
             error_log("[DEBUG] REQUEST {$reqId}: {$method} {$url} {$json}");
         }
+        // list($headers, $resp) = explode("\r\n\r\n", curl_exec($req), 2);
         $resp     = curl_exec($req);
         $respCode = curl_getinfo($req, CURLINFO_HTTP_CODE);
         $respType = curl_getinfo($req, CURLINFO_CONTENT_TYPE);
@@ -573,7 +578,7 @@ class Client {
             return array("__type" => "Date",
                          "iso"    => self::formatDate($value));
         } else if ($value instanceof Object) {
-            if ($encoder && !in_array($value, $seen)) {
+            if ($encoder && $value->hasData() && !in_array($value, $seen)) {
                 $seen[] = $value;
                 return call_user_func(array($value, $encoder), $seen);
             } else {
@@ -654,7 +659,8 @@ class Client {
             return $file;
         }
         if ($type === "Pointer" || $type === "Object") {
-            $obj = Object::create($value["className"], $value["objectId"]);
+            $id  = isset($value["objectId"]) ? $value["objectId"] : null;
+            $obj = Object::create($value["className"], $id);
             unset($value["__type"]);
             unset($value["className"]);
             if (!empty($value)) {

@@ -4,21 +4,61 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7b3f34bbcfe5921d90b021eaf50699e2",
-    "content-hash": "740d753aefed31af8a6202b149e52cde",
+    "hash": "a087f74d454248a0d453ce5a647a9c3f",
+    "content-hash": "052be56c3748f3626cf442c04bf94565",
     "packages": [
         {
-            "name": "leancloud/leancloud-sdk",
-            "version": "v0.5.1",
+            "name": "almasaeed2010/adminlte",
+            "version": "v2.3.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/leancloud/php-sdk.git",
-                "reference": "d45c434ffd93684d7d91db012934eeee764b9a8e"
+                "url": "https://github.com/almasaeed2010/AdminLTE.git",
+                "reference": "2be703222af2edcb87e562d3da2299e4352bff8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/leancloud/php-sdk/d45c434ffd93684d7d91db012934eeee764b9a8e.zip",
-                "reference": "d45c434ffd93684d7d91db012934eeee764b9a8e",
+                "url": "https://files.phpcomposer.com/files/almasaeed2010/AdminLTE/2be703222af2edcb87e562d3da2299e4352bff8a.zip",
+                "reference": "2be703222af2edcb87e562d3da2299e4352bff8a",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abdullah Almsaeed",
+                    "email": "abdullah@almsaeedstudio.com"
+                }
+            ],
+            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 3",
+            "homepage": "http://almsaeedstudio.com/",
+            "keywords": [
+                "JS",
+                "admin",
+                "back-end",
+                "css",
+                "less",
+                "responsive",
+                "template",
+                "theme",
+                "web"
+            ],
+            "time": "2017-01-08 21:03:57"
+        },
+        {
+            "name": "leancloud/leancloud-sdk",
+            "version": "v0.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leancloud/php-sdk.git",
+                "reference": "1a1a9bdb7e8c83f212abaf0816fea6f53cdbd0d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/leancloud/php-sdk/1a1a9bdb7e8c83f212abaf0816fea6f53cdbd0d2.zip",
+                "reference": "1a1a9bdb7e8c83f212abaf0816fea6f53cdbd0d2",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +86,7 @@
             "keywords": [
                 "leancloud"
             ],
-            "time": "2016-11-25 10:34:06"
+            "time": "2017-02-27 08:20:35"
         }
     ],
     "packages-dev": [
