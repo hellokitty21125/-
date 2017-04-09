@@ -34,4 +34,9 @@ class Goods extends BaseController {
 			var_dump($ex);
 		}
 	}
+
+	// 商品列表
+	public function index() {
+		$this->load->view('goods/list');
+	}
 }
