@@ -43,6 +43,10 @@ class Goods extends BaseController {
 
 	// 商品列表-adminlte
 	public function index() {
+		$query = new Query("Goods");
+		$query->descend("createdAt");
+		$result = $query->find();
+		$data['result'] = $result;
 		$data['title'] = '商品列表';
 		$data['js'] = 'goods/index';
 		$this->layout->layout = 'layout';

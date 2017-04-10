@@ -41,7 +41,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
-		<div class="box">
+		<div class="box box-primary">
 		  <div class="box-header with-border">
 		    <h3 class="box-title"><?=$title?></h3>
 		    <div class="box-tools pull-right">
@@ -51,30 +51,22 @@
 		    </div><!-- /.box-tools -->
 		  </div><!-- /.box-header -->
 		  <div class="box-body">
-		    <table class="table table-hover">
+		    <table class="table table-hover table-striped table-bordered">
 				<thead>
 					<tr>
 						<th>名称</th>
-						<th>城市</th>
-						<th>邮编</th>
+						<th>价格</th>
+						<th>缩略图</th>
 					</tr>
 				</thead>
 				<tbody>
+				<?php foreach($result as $item):?>
 					<tr>
-						<td>Tanmay</td>
-						<td>Bangalore</td>
-						<td>560001</td>
+						<td><?=$item->get('title')?></td>
+						<td><?=$item->get('price')?></td>
+						<td><?=$item->get('avatar')?></td>
 					</tr>
-					<tr>
-						<td>Sachin</td>
-						<td>Mumbai</td>
-						<td>400003</td>
-					</tr>
-					<tr>
-						<td>Uma</td>
-						<td>Pune</td>
-						<td>411027</td>
-					</tr>
+				<?php endforeach;?>
 				</tbody>
 			</table>
 		  </div><!-- /.box-body -->
