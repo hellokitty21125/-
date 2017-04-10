@@ -11,9 +11,18 @@
 	<!-- 引入ele.css -->
 	<link href="https://cdn.bootcss.com/element-ui/1.2.5/theme-default/index.css" rel="stylesheet">
 	<style type="text/css">
+		body {
+			margin: 0;
+		}
+		/*导航*/
+		a {
+		  text-decoration:none;
+		}
+		/*面包屑*/
 		.breadcrumb {
 			padding: 25px 10px;
 		}
+		/*左侧菜单*/
 		.menu {
 			margin: 15px 10px;
 		}
