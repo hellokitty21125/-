@@ -26,7 +26,7 @@
 			<el-menu-item index="2"><a href="http://www.it577.net" target="_blank">关于</a></el-menu-item>
 		</el-menu>
 		<el-row class="tac" :gutter="10">
-			<el-col :span="6">
+			<el-col :xm="{span: 24}" :sm="{span: 6}" :md="{span: 4}">
 				<!-- 左侧菜单 -->
 				<el-menu default-active="1" class="el-menu-vertical-demo menu" @open="handleOpen" @close="handleClose" default-openeds="[1]">
 					<el-submenu index="1">
@@ -48,7 +48,7 @@
 					<el-menu-item index="3"><i class="el-icon-setting"></i>系统设置</el-menu-item>
 				</el-menu>
 			</el-col>
-			<el-col :span="18">
+			<el-col :xm="{span:24}" :sm="{span: 18}" :md="{span: 20}">
 				<!-- 主体区域 -->
 				<el-breadcrumb class="breadcrumb" separator="/">
 					<el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
