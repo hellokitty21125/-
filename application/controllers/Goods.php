@@ -36,6 +36,8 @@ class Goods extends BaseController {
 
 	// 商品列表
 	public function index() {
-		$this->load->view('goods/list');
+		$data['title'] = '商品列表';
+		$data['js'] = 'goods/index';
+		$this->layout->view('goods/list', $data);
 	}
 }
