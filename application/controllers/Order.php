@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/BaseController.php';
 
 use \LeanCloud\Object;
 use \LeanCloud\Query;

@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../third_party/wxpay/WxPay.Api.php';
 
 class WXPay extends BaseController {

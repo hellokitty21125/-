@@ -34,10 +34,18 @@ class Goods extends BaseController {
 		}
 	}
 
-	// 商品列表
+	// 商品列表-element
+	// public function index() {
+		// $data['title'] = '商品列表';
+		// $data['js'] = 'goods/index';
+		// $this->layout->view('goods/index', $data);
+	// }
+
+	// 商品列表-adminlte
 	public function index() {
 		$data['title'] = '商品列表';
 		$data['js'] = 'goods/index';
+		$this->layout->layout = 'layout';
 		$this->layout->view('goods/index', $data);
 	}
 }
