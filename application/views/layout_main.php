@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<title><?=$title?></title>
 	<!-- 先引入 Vue -->
 	<script src="https://cdn.bootcss.com/vue/2.2.4/vue.js"></script>
