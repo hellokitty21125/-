@@ -41,13 +41,13 @@
     </section>
     <!-- Main content -->
     <section class="content">
-		<div class="box box-primary">
+		<div class="box box-success box-solid">
 		  <div class="box-header with-border">
 		    <h3 class="box-title"><?=$title?></h3>
 		    <div class="box-tools pull-right">
 		      <!-- Buttons, labels, and many other things can be placed here! -->
 		      <!-- Here is a label for example -->
-		      <span class="label label-primary">Label</span>
+		      <a class="btn btn-sm btn-warning">添加</a>
 		    </div><!-- /.box-tools -->
 		  </div><!-- /.box-header -->
 		  <div class="box-body">
@@ -71,7 +71,23 @@
 			</table>
 		  </div><!-- /.box-body -->
 		  <div class="box-footer">
-		    The footer of the box
+			  <ul class="pagination">
+			    <li>
+			      <a href="#" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+			    <li class="active"><a href="#">1</a></li>
+			    <li><a href="#">2</a></li>
+			    <li><a href="#">3</a></li>
+			    <li><a href="#">4</a></li>
+			    <li><a href="#">5</a></li>
+			    <li>
+			      <a href="#" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>
+			  </ul>
 		  </div><!-- box-footer -->
 		</div><!-- /.box -->
     </section>
