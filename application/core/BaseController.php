@@ -5,6 +5,7 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 use \LeanCloud\Client;
 
 class BaseController extends CI_Controller {
+	var $pageSize = 10;
 	function __construct() {
 		parent::__construct();
 		// 参数依次为 AppId, AppKey, MasterKey

@@ -19,8 +19,6 @@
   <link rel="stylesheet" href="/assets/node_modules/admin-lte/dist/css/skins/_all-skins.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/iCheck/flat/blue.css">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/morris/morris.css">
   <!-- jvectormap -->
   <link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
   <!-- Date Picker -->
@@ -693,9 +691,6 @@
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/assets/node_modules/admin-lte/bootstrap/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="/assets/node_modules/admin-lte/plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="/assets/node_modules/admin-lte/plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->
@@ -716,9 +711,5 @@
 <script src="/assets/node_modules/admin-lte/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="/assets/node_modules/admin-lte/dist/js/app.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/assets/node_modules/admin-lte/dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/assets/node_modules/admin-lte/dist/js/demo.js"></script>
 </body>
 </html>
