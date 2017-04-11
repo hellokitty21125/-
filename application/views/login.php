@@ -1,74 +1,123 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>灵动云商后台管理系统</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<!-- 先引入 Vue -->
-	<script src="https://cdn.bootcss.com/vue/2.2.4/vue.js"></script>
-	<!-- 引入组件库 -->
-	<script src="https://cdn.bootcss.com/element-ui/1.2.5/index.js"></script>
-	<!-- 引入ele.css -->
-	<link href="https://cdn.bootcss.com/element-ui/1.2.5/theme-default/index.css" rel="stylesheet">
-	<style>
-		body {
-			background: #f6f6f6;
-		}
-	</style>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>灵动云商城后台管理系统</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="/assets/node_modules/admin-lte/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/assets/node_modules/admin-lte/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="/assets/node_modules/admin-lte/dist/css/skins/_all-skins.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/iCheck/flat/blue.css">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/morris/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/datepicker/datepicker3.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/daterangepicker/daterangepicker.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+<!-- jQuery 2.2.3 -->
+<script src="/assets/node_modules/admin-lte/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
 </head>
-<body>
-	<div id="app" style="margin-top: 100px;">
-		<!-- 定义行 -->
-		<el-row :gutter="20">
-			<el-col :xs="{offset:2, span:20}" :sm="{offset:6, span:12}" :md="{offset:8, span:8}">
-				<el-card class="box-card">
-					<div slot="header" class="clearfix">
-						<span style="line-height: 36px;">管理员登录</span>
-					</div>
-					<div>
-						<el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign" action="../dashboard/index">
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="offset-md-3 col-md-6">
+				<div class="box box-info">
+		            <div class="box-header with-border">
+		              <h3 class="box-title">用户登录</h3>
+		            </div>
+		            <!-- /.box-header -->
+		            <!-- form start -->
+		            <form class="form-horizontal" action="verify" method="post">
+		              <div class="box-body">
+		                <div class="form-group">
+		                  <label for="username" class="col-sm-2 control-label">用户名</label>
 
-							<el-form-item label="用户名">
-								<el-input v-model="user.username"></el-input>
-								<template slot="prepend">用户名</template>
-							</el-form-item>
+		                  <div class="col-sm-10">
+		                    <input type="text" class="form-control" name="username" value="lendoo" id="username" placeholder="请输入用户名">
+		                  </div>
+		                </div>
+		                <div class="form-group">
+		                  <label for="password" class="col-sm-2 control-label">密码</label>
 
-							<el-form-item label="密码">
-								<el-input type="password" v-model="user.password"></el-input>
-							</el-form-item>
-
-							<el-form-item>
-								<el-button native-type="submit" type="primary">登录</el-button>
-							</el-form-item>
-
-						</el-form>
-					</div>
-				</el-card>
-			</el-col>
-		</el-row>
+		                  <div class="col-sm-10">
+		                    <input type="password" class="form-control" name="password" value="lendoo888" id="password" placeholder="请输入密码">
+		                  </div>
+		                </div>
+<!-- 		                <div class="form-group">
+		                  <div class="col-sm-offset-2 col-sm-10">
+		                    <div class="checkbox">
+		                      <label>
+		                        <input type="checkbox"> Remember me
+		                      </label>
+		                    </div>
+		                  </div>
+		                </div>
+ -->		              </div>
+		              <!-- /.box-body -->
+		              <div class="box-footer">
+		                <button type="submit" class="btn btn-info">登录</button>
+		              </div>
+		              <!-- /.box-footer -->
+		            </form>
+		          </div>
+			</div>
+		</div>
 	</div>
-	<script>
-  // export default {
-  //   data() {
-  //     return {
-  //       labelPosition: 'right',
-  //       formLabelAlign: {
-  //         name: '',
-  //         region: '',
-  //         type: ''
-  //       }
-  //     };
-  //   }
-  // }
-  new Vue({
-  	el: '#app',
-  	data: {
-  		labelPosition: 'right',
-  		user: {
-  			username: '',
-  			password: ''
-  		}
-  	}
-  });
+<!-- ./wrapper -->
+
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button);
 </script>
+<!-- Bootstrap 3.3.6 -->
+<script src="/assets/node_modules/admin-lte/bootstrap/js/bootstrap.min.js"></script>
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="/assets/node_modules/admin-lte/plugins/morris/morris.min.js"></script>
+<!-- Sparkline -->
+<script src="/assets/node_modules/admin-lte/plugins/sparkline/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="/assets/node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/assets/node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="/assets/node_modules/admin-lte/plugins/knob/jquery.knob.js"></script>
+<!-- daterangepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="/assets/node_modules/admin-lte/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="/assets/node_modules/admin-lte/plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="/assets/node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- Slimscroll -->
+<script src="/assets/node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="/assets/node_modules/admin-lte/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="/assets/node_modules/admin-lte/dist/js/app.min.js"></script>
 </body>
 </html>
