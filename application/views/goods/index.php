@@ -1,43 +1,13 @@
-<!-- <template>
-	<el-table
-	:data="tableData3"
-	border
-	stripe
-	tooltip-effect="dark"
-	style="width: 100%"
-	@selection-change="handleSelectionChange">
-		<el-table-column
-		  type="selection"
-		  width="55">
-		</el-table-column>
-		<el-table-column
-		  label="日期"
-		  width="120">
-		  <template scope="scope">{{ scope.row.date }}</template>
-		</el-table-column>
-		<el-table-column
-		  prop="name"
-		  label="姓名"
-		  width="120">
-		</el-table-column>
-		<el-table-column
-		  prop="address"
-		  label="地址"
-		  show-overflow-tooltip>
-		</el-table-column>
-	</el-table>
-</template> -->
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
-		<h1>
-			商品管理
-			<small>Goods</small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-			<li class="active">商品管理</li>
-		</ol>
+    <h1>
+      <?=$title?>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="<?=base_url('dashboard/index')?>"><i class="fa fa-dashboard"></i> 首页</a></li>
+      <li class="active"><?=$title?></li>
+    </ol>
 	</section>
 	<!-- Main content -->
 	<section class="content">
