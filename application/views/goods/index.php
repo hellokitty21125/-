@@ -27,69 +27,76 @@
 		</el-table-column>
 	</el-table>
 </template> -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-        <section class="content-header">
-      <h1>
-        商品管理
-        <small>Goods</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
-        <li class="active">商品管理</li>
-      </ol>
-    </section>
-    <!-- Main content -->
-    <section class="content">
+<div class="content-wrapper">
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+			商品管理
+			<small>Goods</small>
+		</h1>
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+			<li class="active">商品管理</li>
+		</ol>
+	</section>
+	<!-- Main content -->
+	<section class="content">
 		<div class="box box-success box-solid">
-		  <div class="box-header with-border">
-		    <h3 class="box-title"><?=$title?></h3>
-		    <div class="box-tools pull-right">
-		      <!-- Buttons, labels, and many other things can be placed here! -->
-		      <!-- Here is a label for example -->
-		      <a class="btn btn-sm btn-warning">添加</a>
-		    </div><!-- /.box-tools -->
-		  </div><!-- /.box-header -->
-		  <div class="box-body">
-		    <table class="table table-hover table-striped table-bordered">
-				<thead>
-					<tr>
-						<th>名称</th>
-						<th>价格</th>
-						<th>缩略图</th>
-					</tr>
-				</thead>
-				<tbody>
-				<?php foreach($result as $item):?>
-					<tr>
-						<td><?=$item->get('title')?></td>
-						<td><?=$item->get('price')?></td>
-						<td><?=$item->get('avatar')?></td>
-					</tr>
-				<?php endforeach;?>
-				</tbody>
-			</table>
-		  </div><!-- /.box-body -->
-		  <div class="box-footer">
-			  <ul class="pagination">
-			    <li>
-			      <a href="#" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
-			      </a>
-			    </li>
-			    <li class="active"><a href="#">1</a></li>
-			    <li><a href="#">2</a></li>
-			    <li><a href="#">3</a></li>
-			    <li><a href="#">4</a></li>
-			    <li><a href="#">5</a></li>
-			    <li>
-			      <a href="#" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
-			      </a>
-			    </li>
-			  </ul>
-		  </div><!-- box-footer -->
+			<div class="box-header with-border">
+				<h3 class="box-title"><?=$title?></h3>
+				<div class="box-tools pull-right">
+					<!-- Buttons, labels, and many other things can be placed here! -->
+					<!-- Here is a label for example -->
+					<a class="btn btn-sm btn-warning">添加</a>
+				</div><!-- /.box-tools -->
+			</div><!-- /.box-header -->
+			<div class="box-body">
+				<table class="table table-hover table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>缩略图</th>
+							<th>名称</th>
+							<th>分类</th>
+							<th>价格</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach($result as $item):?>
+							<tr>
+								<td><img width="40" height="40" src="<?=$item->get('avatar')?>" class="popover-show" data-container="body" data-placement="bottom" data-toggle="popover" data-html="true" data-trigger="hover focus click" data-content="<img src='<?=$item->get('avatar')?>' />" /></td>
+								<td><?=$item->get('title')?></td>
+								<td><?=$item->get('category') == NULL ? '' : $item->get('category')->get('title')?></td>
+								<td><?=$item->get('price')?></td>
+							</tr>
+						<?php endforeach;?>
+					</tbody>
+				</table>
+			</div><!-- /.box-body -->
+			<div class="box-footer">
+				<ul class="pagination">
+					<li>
+						<a href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="active"><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li>
+						<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</div><!-- box-footer -->
 		</div><!-- /.box -->
-    </section>
-    <!-- /.content -->
-  </div>
+	</section>
+	<!-- /.content -->
+</div>
+<script>
+	$(function () { 
+		$("[data-toggle='popover']").popover();
+	});
+</script>
