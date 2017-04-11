@@ -54,7 +54,6 @@ class Goods extends BaseController {
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
 		// 分页控件
-		$this->load->library('pagination');
 		// url路径前缀
 		$config['base_url'] = base_url(uri_string());
 		// 总条数

@@ -19,7 +19,6 @@ class Order extends BaseController {
 		$data['result'] = $result;
 		$data['title'] = '订单列表';
 		// 分页控件
-		$this->load->library('pagination');
 		// url路径前缀
 		$config['base_url'] = base_url(uri_string());
 		// 总条数
