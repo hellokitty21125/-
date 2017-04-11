@@ -8,7 +8,8 @@ class Goods extends BaseController {
 	
 	public function add() {
 		$data['title'] = '添加商品';
-		$this->load->view('goods_add', $data);
+		// $this->load->view('goods_add', $data);
+		$this->layout->view('goods/add', $data);
 	}
 	
 	public function save() {
@@ -64,7 +65,6 @@ class Goods extends BaseController {
 		// 渲染
 		$data['result'] = $result;
 		$data['title'] = '商品列表';
-		$this->layout->layout = 'layout';
 		$this->layout->view('goods/index', $data);
 	}
 }

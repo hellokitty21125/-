@@ -41,13 +41,11 @@
 	</section>
 	<!-- Main content -->
 	<section class="content">
-		<div class="box box-success box-solid">
+		<div class="box box-info">
 			<div class="box-header with-border">
 				<h3 class="box-title"><?=$title?></h3>
 				<div class="box-tools pull-right">
-					<!-- Buttons, labels, and many other things can be placed here! -->
-					<!-- Here is a label for example -->
-					<a class="btn btn-sm btn-warning">添加</a>
+					<a class="btn btn-sm btn-info" href="add">添加</a>
 				</div><!-- /.box-tools -->
 			</div><!-- /.box-header -->
 			<div class="box-body">
