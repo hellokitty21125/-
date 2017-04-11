@@ -310,8 +310,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-list-ul"></i> 商品列表</a></li>
-            <li><a href="index2.html"><i class="fa fa-sitemap"></i> 商品分类</a></li>
+            <li class="active"><a href="../goods/index"><i class="fa fa-list-ul"></i> 商品列表</a></li>
+            <li><a href="../category/index"><i class="fa fa-sitemap"></i> 商品分类</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -323,10 +323,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+            <li><a href="../order/index"><i class="fa fa-shopping-bag"></i> 订单列表</a></li>
           </ul>
         </li>
         <li class="treeview">
