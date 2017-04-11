@@ -1,10 +1,11 @@
 <?php
+require_once __DIR__ . '/AdminController.php';
 
 use \LeanCloud\Object;
 use \LeanCloud\Query;
 use \LeanCloud\File;
 
-class Goods extends BaseController {
+class Goods extends AdminController {
 	
 	public function add() {
 		$data['title'] = '添加商品';

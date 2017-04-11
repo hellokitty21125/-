@@ -252,7 +252,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs">admin<?//=User::getCurrentUser()->get('username')?><a href="../manager/logout"></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->

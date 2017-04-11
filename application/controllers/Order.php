@@ -1,10 +1,11 @@
 <?php
+require_once __DIR__ . '/AdminController.php';
 
 use \LeanCloud\Object;
 use \LeanCloud\Query;
 use \LeanCloud\File;
 
-class Order extends BaseController {
+class Order extends AdminController {
 // 	获取订单
 	public function index() {
 		// 获取get参数
