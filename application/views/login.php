@@ -25,7 +25,7 @@
 						<span style="line-height: 36px;">管理员登录</span>
 					</div>
 					<div>
-						<el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign" action="verify">
+						<el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign" action="../dashboard/index">
 
 							<el-form-item label="用户名">
 								<el-input v-model="user.username"></el-input>
