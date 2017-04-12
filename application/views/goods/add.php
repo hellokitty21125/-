@@ -156,6 +156,10 @@
                         uploader.on( 'uploadComplete', function( file ) {
                             $( '#'+file.id ).find('.progress').remove();
                         });
+
+                        uploader.on( 'uploadAccept', function( file, response ) {
+                          console.log(response.fileId);
+                      });
                         
                       });
                   </script>
