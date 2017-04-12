@@ -123,6 +123,10 @@
                       var uploadComplete = function( file ) {
                           $( '#'+file.id ).find('.progress').remove();
                       }
+                      // 上传成功
+                      var uploadSuccess = function(file) {
+                        $( '#'+file.id ).addClass('upload-state-done');
+                      }
                       /* .回调 */
 
                       /* 配置 */
@@ -164,7 +168,7 @@
                         .on( 'uploadError', uploadError)
                         .on( 'uploadComplete', uploadComplete)
                         .on( 'uploadSuccess', function( file, response ) {
-                            $( '#'+file.id ).addClass('upload-state-done');
+                            uploadSuccess(file);
                             $('#avatar').attr('value', response.fileId);
                             console.log(response.fileId);
                         });
