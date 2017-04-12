@@ -96,7 +96,7 @@
                         // 内部根据当前运行是创建，可能是input元素，也可能是flash.
                         pick: {
                           id: '#avatarPicker',
-                          multiple: false
+                          multiple: true
                         },
                         // 只允许选择图片文件。
                         accept: {
@@ -177,7 +177,11 @@
                       // 上传回调
                         uploader.on( 'fileQueued', function( file ) {
                             $li = fileQueued(file);
-                            $('#avatarList').html( $li );
+                            if (config.pick.multiple) {
+                              $('#avatarList').append( $li );
+                            } else {
+                              $('#avatarList').html( $li );
+                            }
                           })
                         .on( 'uploadProgress', uploadProgress)
                         .on( 'uploadError', uploadError)
@@ -188,44 +192,6 @@
                             console.log(response.fileId);
                         });
 
-                        var multipleConfig = config;
-                        multipleConfig.pick = {
-                          id: '#thumbPicker',
-                          multiple: true
-                        };
-                        /* 多图上传 */
-                        // 初始化Web Uploader
-                        var uploaderDetail = WebUploader.create(multipleConfig);
-                        // 上传回调
-                        uploaderDetail.on( 'fileQueued', function( file ) {
-                          var $li = $(
-                                  '<div id="' + file.id + '" class="file-item thumbnail">' +
-                                      '<img>' +
-                                      '<div class="info">' + file.name + '</div>' +
-                                  '</div>'
-                                  ),
-                              $img = $li.find('img');
-                            $('#thumbList').append( $li );
-                            // 创建缩略图
-                            // 如果为非图片文件，可以不用调用此方法。
-                            // thumbnailWidth x thumbnailHeight 为 100 x 100
-                            uploaderDetail.makeThumb( file, function( error, src ) {
-                                if ( error ) {
-                                    $img.replaceWith('<span>不能预览</span>');
-                                    return;
-                                }
-
-                                $img.attr( 'src', src );
-                            });
-                          })
-                          .on( 'uploadProgress', uploadProgress)
-                          .on( 'uploadError', uploadError)
-                          .on( 'uploadComplete', uploadComplete)
-                          .on( 'uploadSuccess', function( file, response ) {
-                              uploadSuccess(file);
-                              $('#avatar').attr('value', response.fileId);
-                              console.log(response.fileId);
-                          });
 
                           // 新的多图上传
                           $wrap = $('#uploader'),
