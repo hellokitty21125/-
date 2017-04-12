@@ -123,11 +123,10 @@
                       var uploadComplete = function( file ) {
                           $( '#'+file.id ).find('.progress').remove();
                       }
-                      // .回调
-                      
-                      var $list = $('#fileList');
-                      // 初始化Web Uploader
-                      var uploader = WebUploader.create({
+                      /* .回调 */
+
+                      /* 配置 */
+                      var config = {
                         // 选完文件后，是否自动上传。
                         auto: true,
                         // swf文件路径
@@ -153,26 +152,22 @@
                           // 图片质量，只有type为`image/jpeg`的时候才有效。
                           quality: 100
                         }
-                      });
-
-                      // 当有文件添加进来的时候
-                      uploader.on( 'fileQueued', fileQueued);
-
-                      // 文件上传过程中创建进度条实时显示。
-                      uploader.on( 'uploadProgress', uploadProgress);
-
-                      // 文件上传成功，给item添加成功class, 用样式标记上传成功。
-                      uploader.on( 'uploadSuccess', function( file, response ) {
-                          $( '#'+file.id ).addClass('upload-state-done');
-                          $('#avatar').attr('value', response.fileId);
-                          console.log(response.fileId);
-                      });
-
-                      // 文件上传失败，显示上传出错。
-                      uploader.on( 'uploadError', uploadError);
-
-                      // 完成上传完了，成功或者失败，先删除进度条。
-                      uploader.on( 'uploadComplete', uploadComplete);
+                      };
+                      
+                      // 单图上传
+                      var $list = $('#fileList');
+                      // 初始化Web Uploader
+                      var uploader = WebUploader.create(config);
+                      // 上传回调
+                      uploader.on( 'fileQueued', fileQueued)
+                        .on( 'uploadProgress', uploadProgress)
+                        .on( 'uploadError', uploadError)
+                        .on( 'uploadComplete', uploadComplete)
+                        .on( 'uploadSuccess', function( file, response ) {
+                            $( '#'+file.id ).addClass('upload-state-done');
+                            $('#avatar').attr('value', response.fileId);
+                            console.log(response.fileId);
+                        });
 
                     });
                   </script>
