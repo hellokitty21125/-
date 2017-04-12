@@ -4,6 +4,13 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>灵动云商城后台管理系统</title>
+<!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white">
+  <meta name="apple-mobile-web-app-title" content="灵动云商"/>
+  <link rel="apple-touch-icon-precomposed" href="/assets/images/logo180.png">
+  <!-- icon for web -->
+  <link rel="icon" type="image/png" href="/assets/images/logo180.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
