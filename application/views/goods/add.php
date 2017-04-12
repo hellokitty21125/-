@@ -136,9 +136,10 @@
                         });
 
                         // 文件上传成功，给item添加成功class, 用样式标记上传成功。
-                        uploader.on( 'uploadSuccess', function( file ) {
-                            console.log(file);
+                        uploader.on( 'uploadSuccess', function( file, response ) {
                             $( '#'+file.id ).addClass('upload-state-done');
+                            $('#avatar').attr('value', response.fileId);
+                            console.log(response.fileId);
                         });
 
                         // 文件上传失败，显示上传出错。
@@ -159,11 +160,6 @@
                             $( '#'+file.id ).find('.progress').remove();
                         });
 
-                        uploader.on( 'uploadAccept', function( file, response ) {
-                          $('#avatar').attr('value', response.fileId);
-                          console.log(response.fileId);
-                        });
-                        
                       });
                   </script>
                 <!-- /upload -->
