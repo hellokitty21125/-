@@ -72,6 +72,37 @@
 
                   <script>
                     $(function() {
+
+                      /* 配置 */
+                      var config = {
+                        // 选完文件后，是否自动上传。
+                        auto: true,
+                        // swf文件路径
+                        swf: '/bower_components/fex-webuploader/dist/Uploader.swf',
+                        // 文件接收服务端。
+                        server: '../upload/avatar',
+                        // 选择文件的按钮。可选。
+                        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+                        pick: {
+                          id: '#filePicker',
+                          multiple: false
+                        },
+                        // 只允许选择图片文件。
+                        accept: {
+                            title: 'Images',
+                            extensions: 'gif,jpg,jpeg,bmp,png',
+                            mimeTypes: 'image/*'
+                        },
+                        // 缩略图选项
+                        thumb: {
+                          width: 220,
+                          height: 220,
+                          // 图片质量，只有type为`image/jpeg`的时候才有效。
+                          quality: 100
+                        }
+                      };
+                      /* .配置 */
+                      
                       /* 回调 */
                       // 上传列队添加成员
                       var fileQueued = function( file ) {
@@ -129,34 +160,6 @@
                       }
                       /* .回调 */
 
-                      /* 配置 */
-                      var config = {
-                        // 选完文件后，是否自动上传。
-                        auto: true,
-                        // swf文件路径
-                        swf: '/bower_components/fex-webuploader/dist/Uploader.swf',
-                        // 文件接收服务端。
-                        server: '../upload/avatar',
-                        // 选择文件的按钮。可选。
-                        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-                        pick: {
-                          id: '#filePicker',
-                          multiple: false
-                        },
-                        // 只允许选择图片文件。
-                        accept: {
-                            title: 'Images',
-                            extensions: 'gif,jpg,jpeg,bmp,png',
-                            mimeTypes: 'image/*'
-                        },
-                        // 缩略图选项
-                        thumb: {
-                          width: 220,
-                          height: 220,
-                          // 图片质量，只有type为`image/jpeg`的时候才有效。
-                          quality: 100
-                        }
-                      };
                       
                       // 单图上传
                       var $list = $('#fileList');
