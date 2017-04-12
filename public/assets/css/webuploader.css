@@ -12,12 +12,21 @@
 
 
 #uploader-demo .thumbnail {
-    width: 220px;
-    height: 220px;
+    width: 110px;
+    height: 110px;
 }
 #uploader-demo .thumbnail img {
     width: 100%;
 }
+
+#uploader-thumb .thumbnail {
+    width: 220px;
+    height: 220px;
+}
+#uploader-thumb .thumbnail img {
+    width: 100%;
+}
+
 .uploader-list {
     width: 100%;
     overflow: hidden;

@@ -59,12 +59,12 @@
                 <div class="form-group">
                   <label for="thumbList" class="col-sm-2 control-label">多图</label>
                   <div class="col-sm-8">
-                    <div id="uploader-demo">
+                    <div id="uploader-thumb">
                       <!--用来存放item-->
                       <div id="thumbList" class="uploader-list"></div>
                       <div id="thumbPicker">选择图片</div>
                       <!-- input控件用于保存头像的objectId -->
-                      <input type="hidden" name="avatar" value="" id="avatar" />
+                      <input type="hidden" name="detail" value="" id="detail" />
                     </div>
                   </div>
                 </div>
@@ -105,28 +105,27 @@
                       
                       /* 回调 */
                       // 上传列队添加成员
-                      var fileQueued = function( file ) {
-                          var $li = $(
-                                  '<div id="' + file.id + '" class="file-item thumbnail">' +
-                                      '<img>' +
-                                      '<div class="info">' + file.name + '</div>' +
-                                  '</div>'
-                                  ),
-                              $img = $li.find('img');
-                          // $list为容器jQuery实例
-                          $list.html( $li );
-                          // 创建缩略图
-                          // 如果为非图片文件，可以不用调用此方法。
-                          // thumbnailWidth x thumbnailHeight 为 100 x 100
-                          uploader.makeThumb( file, function( error, src ) {
-                              if ( error ) {
-                                  $img.replaceWith('<span>不能预览</span>');
-                                  return;
-                              }
+                      // var fileQueued = function( file ) {
+                      //     var $li = $(
+                      //             '<div id="' + file.id + '" class="file-item thumbnail">' +
+                      //                 '<img>' +
+                      //                 '<div class="info">' + file.name + '</div>' +
+                      //             '</div>'
+                      //             ),
+                      //         $img = $li.find('img');
+                      //     $list.html( $li );
+                      //     // 创建缩略图
+                      //     // 如果为非图片文件，可以不用调用此方法。
+                      //     // thumbnailWidth x thumbnailHeight 为 100 x 100
+                      //     uploader.makeThumb( file, function( error, src ) {
+                      //         if ( error ) {
+                      //             $img.replaceWith('<span>不能预览</span>');
+                      //             return;
+                      //         }
 
-                              $img.attr( 'src', src );
-                          });
-                      }
+                      //         $img.attr( 'src', src );
+                      //     });
+                      // }
                       // 上传进度监听
                       var uploadProgress = function( file, percentage ) {
                           var $li = $( '#'+file.id ),
@@ -161,12 +160,31 @@
                       /* .回调 */
 
                       
-                      // 单图上传
-                      var $list = $('#fileList');
+                      /* 单图上传 */
                       // 初始化Web Uploader
                       var uploader = WebUploader.create(config);
                       // 上传回调
-                      uploader.on( 'fileQueued', fileQueued)
+                        uploader.on( 'fileQueued', function( file ) {
+                          var $li = $(
+                                  '<div id="' + file.id + '" class="file-item thumbnail">' +
+                                      '<img>' +
+                                      '<div class="info">' + file.name + '</div>' +
+                                  '</div>'
+                                  ),
+                              $img = $li.find('img');
+                            $('#fileList').html( $li );
+                            // 创建缩略图
+                            // 如果为非图片文件，可以不用调用此方法。
+                            // thumbnailWidth x thumbnailHeight 为 100 x 100
+                            uploader.makeThumb( file, function( error, src ) {
+                                if ( error ) {
+                                    $img.replaceWith('<span>不能预览</span>');
+                                    return;
+                                }
+
+                                $img.attr( 'src', src );
+                            });
+                          })
                         .on( 'uploadProgress', uploadProgress)
                         .on( 'uploadError', uploadError)
                         .on( 'uploadComplete', uploadComplete)
@@ -176,10 +194,48 @@
                             console.log(response.fileId);
                         });
 
+                        var multipleConfig = config;
+                        multipleConfig.pick = {
+                          id: '#thumbPicker',
+                          multiple: true
+                        };
+                        /* 多图上传 */
+                        // 初始化Web Uploader
+                        var uploaderDetail = WebUploader.create(multipleConfig);
+                        // 上传回调
+                        uploaderDetail.on( 'fileQueued', function( file ) {
+                          var $li = $(
+                                  '<div id="' + file.id + '" class="file-item thumbnail">' +
+                                      '<img>' +
+                                      '<div class="info">' + file.name + '</div>' +
+                                  '</div>'
+                                  ),
+                              $img = $li.find('img');
+                              console.log($li);
+                            $('#thumbList').html( $li );
+                            // 创建缩略图
+                            // 如果为非图片文件，可以不用调用此方法。
+                            // thumbnailWidth x thumbnailHeight 为 100 x 100
+                            uploaderDetail.makeThumb( file, function( error, src ) {
+                                if ( error ) {
+                                    $img.replaceWith('<span>不能预览</span>');
+                                    return;
+                                }
+
+                                $img.attr( 'src', src );
+                            });
+                          })
+                          .on( 'uploadProgress', uploadProgress)
+                          .on( 'uploadError', uploadError)
+                          .on( 'uploadComplete', uploadComplete)
+                          .on( 'uploadSuccess', function( file, response ) {
+                              uploadSuccess(file);
+                              $('#avatar').attr('value', response.fileId);
+                              console.log(response.fileId);
+                          });
                     });
                   </script>
                 <!-- /upload -->
-              </div>
 
               </div>
               <!-- /.box-body -->
