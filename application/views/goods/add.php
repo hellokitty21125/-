@@ -1,5 +1,6 @@
 <!--引入CSS-->
 <link rel="stylesheet" type="text/css" href="/bower_components/fex-webuploader/dist/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/webuploader.css">
 
 <!--引入JS-->
 <script type="text/javascript" src="/bower_components/fex-webuploader/dist/webuploader.js"></script>
@@ -31,22 +32,28 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-8">
                     <input type="text" class="form-control" id="title" placeholder="请输入商品的标题">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="price" class="col-sm-2 control-label">价格</label>
-                  <div class="col-sm-10">
+                  <div class="col-sm-8">
                     <input type="number" class="form-control" id="price" placeholder="0.0">
                   </div>
                 </div>
                 <!-- upload -->
-                  <div id="uploader-demo">
+                <div class="form-group">
+                  <label for="price" class="col-sm-2 control-label">主图</label>
+                  <div class="col-sm-8">
+                    <div id="uploader-demo">
                       <!--用来存放item-->
                       <div id="fileList" class="uploader-list"></div>
                       <div id="filePicker">选择图片</div>
+                    </div>
                   </div>
+                </div>
+                  
 
                   <script>
                       $(function() {
