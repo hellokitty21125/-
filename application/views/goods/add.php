@@ -50,6 +50,8 @@
                       <!--用来存放item-->
                       <div id="fileList" class="uploader-list"></div>
                       <div id="filePicker">选择图片</div>
+                      <!-- input控件用于保存头像的objectId -->
+                      <input type="hidden" name="avatar" value="" id="avatar" />
                     </div>
                   </div>
                 </div>
@@ -158,6 +160,7 @@
                         });
 
                         uploader.on( 'uploadAccept', function( file, response ) {
+                          $('#avatar').attr('value', response.fileId);
                           console.log(response.fileId);
                         });
                         
