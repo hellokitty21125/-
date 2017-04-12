@@ -83,7 +83,7 @@
                           // 缩略图选项
                           thumb: {
                             width: 220,
-                            height: 200,
+                            height: 220,
                             // 图片质量，只有type为`image/jpeg`的时候才有效。
                             quality: 100
                           }
