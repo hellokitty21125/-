@@ -42,9 +42,9 @@
                     <input type="number" class="form-control" id="price" placeholder="0.0">
                   </div>
                 </div>
-                <!-- upload -->
+                <!-- upload avatar -->
                 <div class="form-group">
-                  <label for="price" class="col-sm-2 control-label">主图</label>
+                  <label for="fileList" class="col-sm-2 control-label">主图</label>
                   <div class="col-sm-8">
                     <div id="uploader-demo">
                       <!--用来存放item-->
@@ -55,102 +55,126 @@
                     </div>
                   </div>
                 </div>
+                <!-- upload detail -->
+                <div class="form-group">
+                  <label for="thumbList" class="col-sm-2 control-label">多图</label>
+                  <div class="col-sm-8">
+                    <div id="uploader-demo">
+                      <!--用来存放item-->
+                      <div id="thumbList" class="uploader-list"></div>
+                      <div id="thumbPicker">选择图片</div>
+                      <!-- input控件用于保存头像的objectId -->
+                      <input type="hidden" name="avatar" value="" id="avatar" />
+                    </div>
+                  </div>
+                </div>
                   
 
                   <script>
-                      $(function() {
-                        var $list = $('#fileList');
-                        // 初始化Web Uploader
-                        var uploader = WebUploader.create({
-                          // 选完文件后，是否自动上传。
-                          auto: true,
-                          // swf文件路径
-                          swf: '/bower_components/fex-webuploader/dist/Uploader.swf',
-                          // 文件接收服务端。
-                          server: '../upload/avatar',
-                          // 选择文件的按钮。可选。
-                          // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-                          pick: {
-                            id: '#filePicker',
-                            multiple: false
-                          },
-                          // 只允许选择图片文件。
-                          accept: {
-                              title: 'Images',
-                              extensions: 'gif,jpg,jpeg,bmp,png',
-                              mimeTypes: 'image/*'
-                          },
-                          // 缩略图选项
-                          thumb: {
-                            width: 220,
-                            height: 220,
-                            // 图片质量，只有type为`image/jpeg`的时候才有效。
-                            quality: 100
+                    $(function() {
+                      /* 回调 */
+                      // 上传列队添加成员
+                      var fileQueued = function( file ) {
+                          var $li = $(
+                                  '<div id="' + file.id + '" class="file-item thumbnail">' +
+                                      '<img>' +
+                                      '<div class="info">' + file.name + '</div>' +
+                                  '</div>'
+                                  ),
+                              $img = $li.find('img');
+                          // $list为容器jQuery实例
+                          $list.html( $li );
+                          // 创建缩略图
+                          // 如果为非图片文件，可以不用调用此方法。
+                          // thumbnailWidth x thumbnailHeight 为 100 x 100
+                          uploader.makeThumb( file, function( error, src ) {
+                              if ( error ) {
+                                  $img.replaceWith('<span>不能预览</span>');
+                                  return;
+                              }
+
+                              $img.attr( 'src', src );
+                          });
+                      }
+                      // 上传进度监听
+                      var uploadProgress = function( file, percentage ) {
+                          var $li = $( '#'+file.id ),
+                              $percent = $li.find('.progress span');
+
+                          // 避免重复创建
+                          if ( !$percent.length ) {
+                              $percent = $('<p class="progress"><span></span></p>')
+                                      .appendTo( $li )
+                                      .find('span');
                           }
-                        });
-
-                        // 当有文件添加进来的时候
-                        uploader.on( 'fileQueued', function( file ) {
-                            var $li = $(
-                                    '<div id="' + file.id + '" class="file-item thumbnail">' +
-                                        '<img>' +
-                                        '<div class="info">' + file.name + '</div>' +
-                                    '</div>'
-                                    ),
-                                $img = $li.find('img');
-                            // $list为容器jQuery实例
-                            $list.html( $li );
-                            // 创建缩略图
-                            // 如果为非图片文件，可以不用调用此方法。
-                            // thumbnailWidth x thumbnailHeight 为 100 x 100
-                            uploader.makeThumb( file, function( error, src ) {
-                                if ( error ) {
-                                    $img.replaceWith('<span>不能预览</span>');
-                                    return;
-                                }
-
-                                $img.attr( 'src', src );
-                            });
-                        });
-
-                        // 文件上传过程中创建进度条实时显示。
-                        uploader.on( 'uploadProgress', function( file, percentage ) {
-                            var $li = $( '#'+file.id ),
-                                $percent = $li.find('.progress span');
-
-                            // 避免重复创建
-                            if ( !$percent.length ) {
-                                $percent = $('<p class="progress"><span></span></p>')
-                                        .appendTo( $li )
-                                        .find('span');
-                            }
-                            $percent.css( 'width', percentage * 100 + '%' );
-                        });
-
-                        // 文件上传成功，给item添加成功class, 用样式标记上传成功。
-                        uploader.on( 'uploadSuccess', function( file, response ) {
-                            $( '#'+file.id ).addClass('upload-state-done');
-                            $('#avatar').attr('value', response.fileId);
-                            console.log(response.fileId);
-                        });
-
-                        // 文件上传失败，显示上传出错。
-                        uploader.on( 'uploadError', function( file ) {
-                            var $li = $( '#'+file.id ),
-                                $error = $li.find('div.error');
-                            // 避免重复创建
-                            if ( !$error.length ) {
-                                $error = $('<div class="error"></div>').appendTo( $li );
-                            }
-                            $error.text('上传失败');
-                        });
-
-                        // 完成上传完了，成功或者失败，先删除进度条。
-                        uploader.on( 'uploadComplete', function( file ) {
-                            $( '#'+file.id ).find('.progress').remove();
-                        });
-
+                          $percent.css( 'width', percentage * 100 + '%' );
+                      }
+                      // 上传失败回调
+                      var uploadError = function( file ) {
+                          var $li = $( '#'+file.id ),
+                              $error = $li.find('div.error');
+                          // 避免重复创建
+                          if ( !$error.length ) {
+                              $error = $('<div class="error"></div>').appendTo( $li );
+                          }
+                          $error.text('上传失败');
+                      };
+                      // 上传完成
+                      var uploadComplete = function( file ) {
+                          $( '#'+file.id ).find('.progress').remove();
+                      }
+                      // .回调
+                      
+                      var $list = $('#fileList');
+                      // 初始化Web Uploader
+                      var uploader = WebUploader.create({
+                        // 选完文件后，是否自动上传。
+                        auto: true,
+                        // swf文件路径
+                        swf: '/bower_components/fex-webuploader/dist/Uploader.swf',
+                        // 文件接收服务端。
+                        server: '../upload/avatar',
+                        // 选择文件的按钮。可选。
+                        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+                        pick: {
+                          id: '#filePicker',
+                          multiple: false
+                        },
+                        // 只允许选择图片文件。
+                        accept: {
+                            title: 'Images',
+                            extensions: 'gif,jpg,jpeg,bmp,png',
+                            mimeTypes: 'image/*'
+                        },
+                        // 缩略图选项
+                        thumb: {
+                          width: 220,
+                          height: 220,
+                          // 图片质量，只有type为`image/jpeg`的时候才有效。
+                          quality: 100
+                        }
                       });
+
+                      // 当有文件添加进来的时候
+                      uploader.on( 'fileQueued', fileQueued);
+
+                      // 文件上传过程中创建进度条实时显示。
+                      uploader.on( 'uploadProgress', uploadProgress);
+
+                      // 文件上传成功，给item添加成功class, 用样式标记上传成功。
+                      uploader.on( 'uploadSuccess', function( file, response ) {
+                          $( '#'+file.id ).addClass('upload-state-done');
+                          $('#avatar').attr('value', response.fileId);
+                          console.log(response.fileId);
+                      });
+
+                      // 文件上传失败，显示上传出错。
+                      uploader.on( 'uploadError', uploadError);
+
+                      // 完成上传完了，成功或者失败，先删除进度条。
+                      uploader.on( 'uploadComplete', uploadComplete);
+
+                    });
                   </script>
                 <!-- /upload -->
               </div>
