@@ -211,8 +211,7 @@
                                   '</div>'
                                   ),
                               $img = $li.find('img');
-                              console.log($li);
-                            $('#thumbList').html( $li );
+                            $('#thumbList').append( $li );
                             // 创建缩略图
                             // 如果为非图片文件，可以不用调用此方法。
                             // thumbnailWidth x thumbnailHeight 为 100 x 100
