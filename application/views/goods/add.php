@@ -59,44 +59,34 @@
 
                   <script>
                       $(function() {
-                            var $ = jQuery,
-                              $list = $('#fileList'),
-                              $btn = $('#ctlBtn'),
-                              state = 'pending',
-                              uploader;
+                        var $list = $('#fileList');
                         // 初始化Web Uploader
                         var uploader = WebUploader.create({
-
-                            // 选完文件后，是否自动上传。
-                            auto: true,
-
-                            // swf文件路径
-                            swf: '/bower_components/fex-webuploader/dist/Uploader.swf',
-
-                            // 文件接收服务端。
-                            server: '../upload/avatar',
-
-                            // 选择文件的按钮。可选。
-                            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
-                            pick: {
-                              id: '#filePicker',
-                              multiple: false
-                            },
-
-                            // 只允许选择图片文件。
-                            accept: {
-                                title: 'Images',
-                                extensions: 'gif,jpg,jpeg,bmp,png',
-                                mimeTypes: 'image/*'
-                            },
-
-                            // 缩略图选项
-                            thumb: {
-                              width: 220,
-                              height: 200,
-                              // 图片质量，只有type为`image/jpeg`的时候才有效。
-                              quality: 100
-                            }
+                          // 选完文件后，是否自动上传。
+                          auto: true,
+                          // swf文件路径
+                          swf: '/bower_components/fex-webuploader/dist/Uploader.swf',
+                          // 文件接收服务端。
+                          server: '../upload/avatar',
+                          // 选择文件的按钮。可选。
+                          // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+                          pick: {
+                            id: '#filePicker',
+                            multiple: false
+                          },
+                          // 只允许选择图片文件。
+                          accept: {
+                              title: 'Images',
+                              extensions: 'gif,jpg,jpeg,bmp,png',
+                              mimeTypes: 'image/*'
+                          },
+                          // 缩略图选项
+                          thumb: {
+                            width: 220,
+                            height: 200,
+                            // 图片质量，只有type为`image/jpeg`的时候才有效。
+                            quality: 100
+                          }
                         });
 
                         // 当有文件添加进来的时候
@@ -108,11 +98,8 @@
                                     '</div>'
                                     ),
                                 $img = $li.find('img');
-
-
                             // $list为容器jQuery实例
                             $list.html( $li );
-
                             // 创建缩略图
                             // 如果为非图片文件，可以不用调用此方法。
                             // thumbnailWidth x thumbnailHeight 为 100 x 100
@@ -137,7 +124,6 @@
                                         .appendTo( $li )
                                         .find('span');
                             }
-
                             $percent.css( 'width', percentage * 100 + '%' );
                         });
 
@@ -152,12 +138,10 @@
                         uploader.on( 'uploadError', function( file ) {
                             var $li = $( '#'+file.id ),
                                 $error = $li.find('div.error');
-
                             // 避免重复创建
                             if ( !$error.length ) {
                                 $error = $('<div class="error"></div>').appendTo( $li );
                             }
-
                             $error.text('上传失败');
                         });
 
