@@ -72,7 +72,7 @@
                             swf: '/bower_components/fex-webuploader/dist/Uploader.swf',
 
                             // 文件接收服务端。
-                            server: 'http://webuploader.duapp.com/server/fileupload.php',
+                            server: '../upload/avatar',
 
                             // 选择文件的按钮。可选。
                             // 内部根据当前运行是创建，可能是input元素，也可能是flash.
@@ -135,6 +135,7 @@
 
                         // 文件上传成功，给item添加成功class, 用样式标记上传成功。
                         uploader.on( 'uploadSuccess', function( file ) {
+                            console.log(file);
                             $( '#'+file.id ).addClass('upload-state-done');
                         });
 
