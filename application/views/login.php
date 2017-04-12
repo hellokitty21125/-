@@ -13,6 +13,10 @@
 	<link rel="icon" type="image/png" href="/assets/images/logo180.png">
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- jQuery 2.2.3 -->
+	<script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+	<!-- Bootstrap 3.3.6 -->
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<!-- Bootstrap 3.3.6 -->
 	<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<!-- Theme style -->
@@ -20,9 +24,8 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link href="https://cdn.bootcss.com/admin-lte/2.3.11/css/skins/_all-skins.min.css" rel="stylesheet">
-  <!-- jQuery 2.2.3 -->
-  <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
-  <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -78,8 +81,5 @@
 	</div>
 </div>
 <!-- ./wrapper -->
-
-<!-- Bootstrap 3.3.6 -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>
