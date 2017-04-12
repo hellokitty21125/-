@@ -116,27 +116,27 @@
                       
                       /* 回调 */
                       // 上传列队添加成员
-                      // var fileQueued = function( file ) {
-                      //     var $li = $(
-                      //             '<div id="' + file.id + '" class="file-item thumbnail">' +
-                      //                 '<img>' +
-                      //                 '<div class="info">' + file.name + '</div>' +
-                      //             '</div>'
-                      //             ),
-                      //         $img = $li.find('img');
-                      //     $list.html( $li );
-                      //     // 创建缩略图
-                      //     // 如果为非图片文件，可以不用调用此方法。
-                      //     // thumbnailWidth x thumbnailHeight 为 100 x 100
-                      //     uploader.makeThumb( file, function( error, src ) {
-                      //         if ( error ) {
-                      //             $img.replaceWith('<span>不能预览</span>');
-                      //             return;
-                      //         }
+                      var fileQueued = function( file ) {
+                          var $li = $(
+                                  '<div id="' + file.id + '" class="file-item thumbnail">' +
+                                      '<img>' +
+                                      '<div class="info">' + file.name + '</div>' +
+                                  '</div>'
+                                  ),
+                              $img = $li.find('img');
+                          // 创建缩略图
+                          // 如果为非图片文件，可以不用调用此方法。
+                          // thumbnailWidth x thumbnailHeight 为 100 x 100
+                          uploader.makeThumb( file, function( error, src ) {
+                              if ( error ) {
+                                  $img.replaceWith('<span>不能预览</span>');
+                                  return;
+                              }
 
-                      //         $img.attr( 'src', src );
-                      //     });
-                      // }
+                              $img.attr( 'src', src );
+                          });
+                          return $li;
+                      }
                       // 上传进度监听
                       var uploadProgress = function( file, percentage ) {
                           var $li = $( '#'+file.id ),
@@ -176,25 +176,8 @@
                       var uploader = WebUploader.create(config);
                       // 上传回调
                         uploader.on( 'fileQueued', function( file ) {
-                          var $li = $(
-                                  '<div id="' + file.id + '" class="file-item thumbnail">' +
-                                      '<img>' +
-                                      '<div class="info">' + file.name + '</div>' +
-                                  '</div>'
-                                  ),
-                              $img = $li.find('img');
+                            $li = fileQueued(file);
                             $('#avatarList').html( $li );
-                            // 创建缩略图
-                            // 如果为非图片文件，可以不用调用此方法。
-                            // thumbnailWidth x thumbnailHeight 为 100 x 100
-                            uploader.makeThumb( file, function( error, src ) {
-                                if ( error ) {
-                                    $img.replaceWith('<span>不能预览</span>');
-                                    return;
-                                }
-
-                                $img.attr( 'src', src );
-                            });
                           })
                         .on( 'uploadProgress', uploadProgress)
                         .on( 'uploadError', uploadError)
