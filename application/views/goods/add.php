@@ -42,13 +42,10 @@
                   <label for="title" class="col-sm-2 control-label">分类</label>
                   <div class="col-sm-8">
                     <select class="form-control select2" style="width: 100%;">
-                      <option selected="selected">Alabama</option>
-                      <option>Alaska</option>
-                      <option>California</option>
-                      <option>Delaware</option>
-                      <option>Tennessee</option>
-                      <option>Texas</option>
-                      <option>Washington</option>
+                      <option selected="selected" value="">请选择</option>
+                      <?foreach ($categoris as $category):?>
+                        <option><?=$category->get('title');?></option>
+                      <?endforeach;?>
                     </select>
                   </div>
                 </div>

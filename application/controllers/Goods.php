@@ -6,10 +6,15 @@ use \LeanCloud\Query;
 use \LeanCloud\File;
 
 class Goods extends AdminController {
-	
+	function __construct() {
+		parent::__construct();
+		$this->load->model('Category_model', 'category_model');
+	}
+
 	public function add() {
+		// 获取顶级分类
+		$data['categoris'] = $this->category_model->find(null);
 		$data['title'] = '添加商品';
-		// $this->load->view('goods_add', $data);
 		$this->layout->view('goods/add', $data);
 	}
 	
