@@ -1,7 +1,9 @@
 <!--引入CSS-->
 <link rel="stylesheet" type="text/css" href="/bower_components/fex-webuploader/dist/webuploader.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/webuploader.css">
-
+<link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/select2/select2.min.css">
+<!-- Select2 -->
+<script src="/assets/node_modules/admin-lte/plugins/select2/select2.full.min.js"></script>
 <!--引入JS-->
 <script type="text/javascript" src="/bower_components/fex-webuploader/dist/webuploader.js"></script>
 
@@ -34,6 +36,20 @@
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
                     <input type="text" class="form-control" id="title" placeholder="请输入商品的标题">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="title" class="col-sm-2 control-label">分类</label>
+                  <div class="col-sm-8">
+                    <select class="form-control select2" style="width: 100%;">
+                      <option selected="selected">Alabama</option>
+                      <option>Alaska</option>
+                      <option>California</option>
+                      <option>Delaware</option>
+                      <option>Tennessee</option>
+                      <option>Texas</option>
+                      <option>Washington</option>
+                    </select>
                   </div>
                 </div>
                 <div class="form-group">
@@ -99,7 +115,8 @@
 
                   <script>
                     $(function() {
-
+                      // select2
+                      $(".select2").select2();
                       /* 配置 */
                       var config = {
                         // 选完文件后，是否自动上传。
