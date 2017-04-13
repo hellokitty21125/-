@@ -47,10 +47,10 @@
                   <div class="col-sm-8">
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-primary active">
-                        <input type="radio" name="isHot" value="true" id="option1" autocomplete="off" checked> 热卖
+                        <input type="radio" name="isHot" value="true" id="option1" autocomplete="off" checked> 推荐
                       </label>
                       <label class="btn btn-primary">
-                        <input type="radio" name="isHot" value="false" id="option3" autocomplete="off"> 非热卖
+                        <input type="radio" name="isHot" value="false" id="option3" autocomplete="off"> 不推荐
                       </label>
                     </div>
                   </div>
