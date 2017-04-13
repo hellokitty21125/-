@@ -117,7 +117,9 @@
                   <script>
                     $(function() {
                       // select2
-                      $(".select2").select2();
+                      $(".select2").select2({
+                        placeholder: "请选择分类"
+                      });
                       /* 配置 */
                       var config = {
                         // 选完文件后，是否自动上传。
