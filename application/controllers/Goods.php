@@ -87,4 +87,14 @@ class Goods extends AdminController {
 		$data['title'] = '商品列表';
 		$this->layout->view('goods/index', $data);
 	}
+
+	// 删除商品
+	public function delete() {
+		$objectId = $this->input->get('objectId');
+		$goods = Object::create('Goods', $objectId);
+		$goods->destroy();
+		$data['msg'] = '删除成功';
+		$data['level'] = 'info';
+		$this->layout->view('goods/msg', $data);
+	}
 }
