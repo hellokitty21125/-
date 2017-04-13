@@ -171,11 +171,11 @@
                       /* .回调 */
 
                       
-                      /* 单图上传 */
+                      /* 主图多图上传 */
                       // 初始化Web Uploader
-                      var uploader = WebUploader.create(config);
+                      var imageUploader = WebUploader.create(config);
                       // 上传回调
-                        uploader.on( 'fileQueued', function( file ) {
+                        imageUploader.on( 'fileQueued', function( file ) {
                             $li = fileQueued(file);
                             if (config.pick.multiple) {
                               $('#imagesList').append( $li );
