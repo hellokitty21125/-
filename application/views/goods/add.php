@@ -30,8 +30,8 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" action="save" method="post">
-              <div class="box-body">
+            <div class="box-body">
+              <form class="form-horizontal" action="save" method="post">
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
@@ -677,11 +677,10 @@
                     });
                   </script>
                 <!-- /upload -->
-
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-info">保存</button>
+                <button type="submit" id="submit" class="btn btn-info">保存</button>
               </div>
               <!-- /.box-footer -->
             </form>

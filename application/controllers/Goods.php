@@ -41,10 +41,16 @@ class Goods extends AdminController {
 
 		try {
 			$object->save();
-			echo "发布成功";
+			// echo json_encode(['msg' => '发布成功']);
+			$data['msg'] = '发布成功';
+			$data['level'] = 'info';
+			$this->layout->view('goods/msg', $data);
 		} catch (Exception $ex) {
-			echo "操作失败";
-			var_dump($ex);
+			$data['msg'] = '操作失败';
+			$data['level'] = 'warning';
+			$this->layout->view('goods/msg', $data);
+			// echo json_encode(['msg'] => '操作失败');
+			// var_dump($ex);
 		}
 	}
 
