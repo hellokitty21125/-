@@ -42,14 +42,14 @@
                     <input type="number" class="form-control" id="price" placeholder="0.0">
                   </div>
                 </div>
-                <!-- upload avatar -->
+                <!-- upload images -->
                 <div class="form-group">
                   <label for="fileList" class="col-sm-2 control-label">主图</label>
                   <div class="col-sm-8">
                     <div id="uploader-demo">
                       <!--用来存放item-->
-                      <div id="avatarList" class="uploader-list"></div>
-                      <div id="avatarPicker">选择图片</div>
+                      <div id="imagesList" class="uploader-list"></div>
+                      <div id="imagesPicker">选择图片</div>
                       <!-- input控件用于保存头像的objectId -->
                       <input type="hidden" name="avatar" value="" id="avatar" />
                     </div>
@@ -95,7 +95,7 @@
                         // 选择文件的按钮。可选。
                         // 内部根据当前运行是创建，可能是input元素，也可能是flash.
                         pick: {
-                          id: '#avatarPicker',
+                          id: '#imagesPicker',
                           multiple: true
                         },
                         // 只允许选择图片文件。
@@ -178,9 +178,9 @@
                         uploader.on( 'fileQueued', function( file ) {
                             $li = fileQueued(file);
                             if (config.pick.multiple) {
-                              $('#avatarList').append( $li );
+                              $('#imagesList').append( $li );
                             } else {
-                              $('#avatarList').html( $li );
+                              $('#imagesList').html( $li );
                             }
                           })
                         .on( 'uploadProgress', uploadProgress)
