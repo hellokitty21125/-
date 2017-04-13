@@ -17,11 +17,12 @@ class Goods extends AdminController {
 		// 获取参数
 		$avatar = $this->input->post('avatar');
 		$title = $this->input->post('title');
-		$this->load->library('upload');
-		// 图片上传
-		$file = File::createWithLocalFile($_FILES['avatarFile']['tmp_name'], $_FILES['avatarFile']['type']);
-		// 保存图片
-		$file->save();
+		$isHot = $this->input->post('isHot');
+		// $this->load->library('upload');
+		// // 图片上传
+		// $file = File::createWithLocalFile($_FILES['avatarFile']['tmp_name'], $_FILES['avatarFile']['type']);
+		// // 保存图片
+		// $file->save();
 		// save to leanCloud
 		$object = new Object("Goods");
 		$object->set("title", $title);

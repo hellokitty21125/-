@@ -28,7 +28,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="save" method="post">
               <div class="box-body">
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
@@ -47,10 +47,10 @@
                   <div class="col-sm-8">
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-primary active">
-                        <input type="radio" name="isHot" id="option1" autocomplete="off" checked> 推荐
+                        <input type="radio" name="isHot" value="true" id="option1" autocomplete="off" checked> 热卖
                       </label>
                       <label class="btn btn-primary">
-                        <input type="radio" name="isHot" id="option3" autocomplete="off"> 不推荐
+                        <input type="radio" name="isHot" value="false" id="option3" autocomplete="off"> 非热卖
                       </label>
                     </div>
                   </div>
