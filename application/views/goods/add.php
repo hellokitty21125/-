@@ -193,60 +193,60 @@
                         });
 
 
-                          // 新的多图上传
-                          $wrap = $('#uploader'),
+                        // 新的多图上传
+                        $wrap = $('#uploader'),
 
-                          // 图片容器
-                          $queue = $('<ul class="filelist"></ul>')
-                              .appendTo( $wrap.find('.queueList') ),
+                        // 图片容器
+                        $queue = $('<ul class="filelist"></ul>')
+                            .appendTo( $wrap.find('.queueList') ),
 
-                          // 状态栏，包括进度和控制按钮
-                          $statusBar = $wrap.find('.statusBar'),
+                        // 状态栏，包括进度和控制按钮
+                        $statusBar = $wrap.find('.statusBar'),
 
-                          // 文件总体选择信息。
-                          $info = $statusBar.find('.info'),
+                        // 文件总体选择信息。
+                        $info = $statusBar.find('.info'),
 
-                          // 上传按钮
-                          $upload = $wrap.find('.uploadBtn'),
+                        // 上传按钮
+                        $upload = $wrap.find('.uploadBtn'),
 
-                          // 没选择文件之前的内容。
-                          $placeHolder = $wrap.find('.placeholder'),
+                        // 没选择文件之前的内容。
+                        $placeHolder = $wrap.find('.placeholder'),
 
-                          // 总体进度条
-                          $progress = $statusBar.find('.progress').hide(),
+                        // 总体进度条
+                        $progress = $statusBar.find('.progress').hide(),
 
-                          // 添加的文件数量
-                          fileCount = 0,
+                        // 添加的文件数量
+                        fileCount = 0,
 
-                          // 添加的文件总大小
-                          fileSize = 0,
+                        // 添加的文件总大小
+                        fileSize = 0,
 
-                          // 优化retina, 在retina下这个值是2
-                          ratio = window.devicePixelRatio || 1,
+                        // 优化retina, 在retina下这个值是2
+                        ratio = window.devicePixelRatio || 1,
 
-                          // 缩略图大小
-                          thumbnailWidth = 110 * ratio,
-                          thumbnailHeight = 110 * ratio,
+                        // 缩略图大小
+                        thumbnailWidth = 110 * ratio,
+                        thumbnailHeight = 110 * ratio,
 
-                          // 可能有pedding, ready, uploading, confirm, done.
-                          state = 'pedding',
+                        // 可能有pedding, ready, uploading, confirm, done.
+                        state = 'pedding',
 
-                          // 所有文件的进度信息，key为file id
-                          percentages = {},
+                        // 所有文件的进度信息，key为file id
+                        percentages = {},
 
-                          supportTransition = (function(){
-                              var s = document.createElement('p').style,
-                                  r = 'transition' in s ||
-                                        'WebkitTransition' in s ||
-                                        'MozTransition' in s ||
-                                        'msTransition' in s ||
-                                        'OTransition' in s;
-                              s = null;
-                              return r;
-                          })(),
+                        supportTransition = (function(){
+                            var s = document.createElement('p').style,
+                                r = 'transition' in s ||
+                                      'WebkitTransition' in s ||
+                                      'MozTransition' in s ||
+                                      'msTransition' in s ||
+                                      'OTransition' in s;
+                            s = null;
+                            return r;
+                        })(),
 
-                          // WebUploader实例
-                          uploader;
+                        // WebUploader实例
+                        uploader;
 
                       if ( !WebUploader.Uploader.support() ) {
                           alert( 'Web Uploader 不支持您的浏览器！如果你使用的是IE浏览器，请尝试升级 flash 播放器');
@@ -274,7 +274,6 @@
                           disableGlobalDnd: true,
 
                           chunked: true,
-                          // server: 'http://webuploader.duapp.com/server/fileupload.php',
                           server: '../upload/avatar',
                           fileNumLimit: 300,
                           fileSizeLimit: 5 * 1024 * 1024,    // 200 M
@@ -296,9 +295,7 @@
                                   '</li>' ),
 
                               $btns = $('<div class="file-panel">' +
-                                  '<span class="cancel">删除</span>' +
-                                  '<span class="rotateRight">向右旋转</span>' +
-                                  '<span class="rotateLeft">向左旋转</span></div>').appendTo( $li ),
+                                  '<span class="cancel">删除</span>').appendTo( $li ),
                               $prgress = $li.find('p.progress span'),
                               $wrap = $li.find( 'p.imgWrap' ),
                               $info = $('<p class="error"></p>'),
@@ -628,7 +625,7 @@
 
                       $upload.addClass( 'state-' + state );
                       updateTotalProgress();
-                                      });
+                    });
                   </script>
                 <!-- /upload -->
 
