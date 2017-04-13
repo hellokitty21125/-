@@ -41,10 +41,14 @@
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">分类</label>
                   <div class="col-sm-8">
-                    <select class="form-control select2" style="width: 100%;">
+                    <select class="form-control select2" style="width: 100%;" name="category">
                       <option selected="selected" value="">请选择</option>
-                      <?foreach ($categoris as $category):?>
-                        <option><?=$category->get('title');?></option>
+                      <?foreach ($categoris as $parent => $children):?>
+                        <optgroup label="<?=$parent?>">
+                          <?foreach ($children as $child):?>
+                            <option value="<?=$child->get('objectId')?>"><?=$child->get('title')?></option>
+                          <?endforeach;?>
+                        </optgroup>
                       <?endforeach;?>
                     </select>
                   </div>

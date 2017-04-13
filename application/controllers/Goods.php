@@ -13,7 +13,7 @@ class Goods extends AdminController {
 
 	public function add() {
 		// 获取顶级分类
-		$data['categoris'] = $this->category_model->find(null);
+		$data['categoris'] = $this->category_model->findAll();
 		$data['title'] = '添加商品';
 		$this->layout->view('goods/add', $data);
 	}
