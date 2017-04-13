@@ -1,11 +1,11 @@
 /*demo样式*/
-#picker {
+#imagesPicker {
     display: inline-block;
     line-height: 1.428571429;
     vertical-align: middle;
     margin: 0 12px 0 0;
 }
-#picker .webuploader-pick {
+#imagesPicker .webuploader-pick {
     padding: 6px 12px;
     display: block;
 }

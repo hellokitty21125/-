@@ -44,12 +44,15 @@
                 </div>
                 <!-- upload images -->
                 <div class="form-group">
-                  <label for="fileList" class="col-sm-2 control-label">主图</label>
+                  <label for="fileList" class="col-sm-2 control-label">产品图</label>
                   <div class="col-sm-8">
                     <div id="uploader-demo">
                       <!--用来存放item-->
                       <div id="imagesList" class="uploader-list"></div>
-                      <div id="imagesPicker">选择图片</div>
+                      <div class="btns">
+                        <div id="imagesPicker">选择图片</div>
+                          <button id="ctlBtn" type="button" class="hidden btn btn-default">开始上传</button>
+                      </div>
                       <!-- input控件用于保存头像的objectId -->
                       <input type="hidden" name="avatar" value="" id="avatar" />
                     </div>
@@ -87,7 +90,7 @@
                       /* 配置 */
                       var config = {
                         // 选完文件后，是否自动上传。
-                        auto: true,
+                        auto: false,
                         // swf文件路径
                         swf: '/bower_components/fex-webuploader/dist/Uploader.swf',
                         // 文件接收服务端。
@@ -177,6 +180,7 @@
                       // 上传回调
                         imageUploader.on( 'fileQueued', function( file ) {
                             $li = fileQueued(file);
+                            $('#ctlBtn').removeClass('hidden');
                             if (config.pick.multiple) {
                               $('#imagesList').append( $li );
                             } else {
@@ -191,9 +195,12 @@
                             $('#avatar').attr('value', response.fileId);
                             console.log(response.fileId);
                         });
+                        $('#ctlBtn').click(function () {
+                          imageUploader.upload();
+                        });
 
 
-                        // 新的多图上传
+                        // 详情多图上传
                         $wrap = $('#uploader'),
 
                         // 图片容器
