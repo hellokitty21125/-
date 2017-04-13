@@ -42,6 +42,19 @@
                     <input type="number" class="form-control" id="price" placeholder="0.0">
                   </div>
                 </div>
+                <div class="form-group">
+                  <label for="isHot" class="col-sm-2 control-label">价格</label>
+                  <div class="col-sm-8">
+                    <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-primary active">
+                        <input type="radio" name="isHot" id="option1" autocomplete="off" checked> 推荐
+                      </label>
+                      <label class="btn btn-primary">
+                        <input type="radio" name="isHot" id="option3" autocomplete="off"> 不推荐
+                      </label>
+                    </div>
+                  </div>
+                </div>
                 <!-- upload images -->
                 <div class="form-group">
                   <label for="fileList" class="col-sm-2 control-label">产品图</label>
