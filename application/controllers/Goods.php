@@ -20,19 +20,25 @@ class Goods extends AdminController {
 	
 	public function save() {
 		// 获取参数
-		$avatar = $this->input->post('avatar');
 		$title = $this->input->post('title');
+		$category = $this->input->post('category');
+		$price = $this->input->post('price');
 		$isHot = $this->input->post('isHot');
-		// $this->load->library('upload');
-		// // 图片上传
-		// $file = File::createWithLocalFile($_FILES['avatarFile']['tmp_name'], $_FILES['avatarFile']['type']);
-		// // 保存图片
-		// $file->save();
+		$images = $this->input->post('images');
+		$detail = $this->input->post('detail');
+		// 主图是第一个产品图
+		$avatar = json_decode($images)[0];
 		// save to leanCloud
 		$object = new Object("Goods");
 		$object->set("title", $title);
 		$object->set("avatar", $avatar);
-		$object->set("avatarFile", $file);
+		// 将category转为LeanCloud对象
+		$object->set("category", Object::create('Category', $category));
+		$object->set("price", (float)$price);
+		$object->set("isHot", (bool)$isHot);
+		$object->set("images", json_decode($images));
+		$object->set("detail", json_decode($detail));
+
 		try {
 			$object->save();
 			echo "发布成功";

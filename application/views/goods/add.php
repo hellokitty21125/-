@@ -35,7 +35,7 @@
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" id="title" placeholder="请输入商品的标题">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入商品的标题">
                   </div>
                 </div>
                 <div class="form-group">
@@ -56,7 +56,7 @@
                 <div class="form-group">
                   <label for="price" class="col-sm-2 control-label">价格</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" id="price" placeholder="0.0">
+                    <input type="number" class="form-control" name="price" id="price" placeholder="0.0">
                   </div>
                 </div>
                 <div class="form-group">
@@ -83,8 +83,8 @@
                         <div id="imagesPicker">选择图片</div>
                           <button id="ctlBtn" type="button" class="hidden btn btn-default">开始上传</button>
                       </div>
-                      <!-- input控件用于保存头像的objectId -->
-                      <input type="hidden" name="avatar" value="" id="avatar" />
+                      <!-- input控件用于保存详情图片的url -->
+                      <input type="hidden" name="images" value="" id="images" />
                     </div>
                   </div>
                 </div>
@@ -109,6 +109,9 @@
                           </div>
                       </div>
                     </div>
+                    <!-- input控件用于保存详情图片的url -->
+                    <input type="hidden" name="detail" value="" id="detail" />
+
                     <!-- .upload -->
                   </div>
                 </div>
@@ -206,7 +209,8 @@
                       }
                       /* .回调 */
 
-                      
+                      // 设置file-url存值
+                      var imagesUrl = [];
                       /* 主图多图上传 */
                       // 初始化Web Uploader
                       var imageUploader = WebUploader.create(config);
@@ -225,15 +229,16 @@
                         .on( 'uploadComplete', uploadComplete)
                         .on( 'uploadSuccess', function( file, response ) {
                             uploadSuccess(file);
-                            $('#avatar').attr('value', response.fileId);
-                            console.log(response.fileId);
+                            imagesUrl.push(response.url);
+                            $('#images').attr('value', JSON.stringify(imagesUrl));
                         });
                         $('#ctlBtn').click(function () {
                           imageUploader.upload();
                         });
 
 
-                        // 详情多图上传
+                        /* 详情多图上传 */
+                        var detailUrl = [];
                         $wrap = $('#uploader'),
 
                         // 图片容器
@@ -571,7 +576,7 @@
                               case 'finish':
                                   stats = uploader.getStats();
                                   if ( stats.successNum ) {
-                                      alert( '上传成功' );
+                                      // alert( '上传成功' );
                                   } else {
                                       // 没有成功的图片，重设
                                       state = 'done';
@@ -618,6 +623,10 @@
                           updateTotalProgress();
 
                       };
+                      uploader.on('uploadSuccess', function (file, response) {
+                        detailUrl.push(response.url);
+                        $('#detail').attr('value', JSON.stringify(detailUrl));
+                      });
 
                       uploader.on( 'all', function( type ) {
                           var stats;

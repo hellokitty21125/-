@@ -15,7 +15,6 @@ class Category_model extends CI_Model {
 		$query->equalTo('parent', null);
 		$categoris = $query->find();
 		// 2. sub
-		$result = array();
 		foreach ($categoris as $parent) {
 			$query->equalTo('parent', $parent);
 			$children = $query->find();

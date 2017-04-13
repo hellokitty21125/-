@@ -9,7 +9,7 @@ class Upload extends AdminController {
 		$file = File::createWithLocalFile($_FILES['file']['tmp_name'], $_FILES['file']['type']);
 		// 保存图片
 		$file->save();
-		echo json_encode(['fileId' => $file->get('objectId')]);
+		echo json_encode(['url' => $file->get('url')]);
 	}
 }
 ?>
