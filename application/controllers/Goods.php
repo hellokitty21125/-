@@ -24,6 +24,7 @@ class Goods extends AdminController {
 		$category = $this->input->post('category');
 		$price = $this->input->post('price');
 		$isHot = $this->input->post('isHot');
+		$isNew = $this->input->post('isNew');
 		$images = $this->input->post('images');
 		$detail = $this->input->post('detail');
 		// 主图是第一个产品图
@@ -36,6 +37,7 @@ class Goods extends AdminController {
 		$object->set("category", Object::create('Category', $category));
 		$object->set("price", (float)$price);
 		$object->set("isHot", (bool)$isHot);
+		$object->set("isNew", (bool)$isNew);
 		$object->set("images", json_decode($images));
 		$object->set("detail", json_decode($detail));
 
