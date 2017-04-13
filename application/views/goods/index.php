@@ -26,6 +26,7 @@
 							<th>名称</th>
 							<th>分类</th>
 							<th>价格</th>
+							<th>删除</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -35,6 +36,7 @@
 								<td><?=$item->get('title')?></td>
 								<td><?=$item->get('category') == NULL ? '' : $item->get('category')->get('title')?></td>
 								<td><?=$item->get('price')?></td>
+								<td><button type="button" class="btn btn-info" class="popover-show">删除</button></td>
 							</tr>
 						<?php endforeach;?>
 					</tbody>

@@ -70,7 +70,7 @@ class Goods extends AdminController {
 		// 分页查询数据
 		$query = new Query("Goods");
 		$query->_include("category");
-		$query->ascend("updatedAt");
+		$query->descend("updatedAt");
 		$query->limit($this->config->item('per_page'));
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
 		$result = $query->find();
