@@ -1,3 +1,10 @@
+<!-- 引入bs-confirmation -->
+<script src="/bower_components/bs-confirmation/bootstrap-confirmation.js"></script>
+<style>
+	.btn-margin {
+		margin: 2px;
+	}
+</style>
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
@@ -36,11 +43,26 @@
 								<td><?=$item->get('title')?></td>
 								<td><?=$item->get('category') == NULL ? '' : $item->get('category')->get('title')?></td>
 								<td><?=$item->get('price')?></td>
-								<td><button type="button" class="btn btn-info" class="popover-show">删除</button></td>
+								<td><a type="button" class="btn btn-info delete" href="delete?objectId=<?=$item->get('objectId')?>">删除</a></td>
 							</tr>
 						<?php endforeach;?>
 					</tbody>
 				</table>
+				<script type="text/javascript">
+					$('.delete').confirmation({
+						onConfirm: function() { },
+						onCancel: function() { },
+						href: function (e) {
+							return $(e).attr('href');
+						},
+						title: '确定删除吗？',
+						btnOkClass: 'btn btn-sm btn-danger btn-margin',
+						btnCancelClass: 'btn btn-sm btn-default btn-margin',
+						btnOkLabel: '删除',
+						btnCancelLabel: '取消',
+						placement: 'bottom'
+					})
+				</script>
 			</div><!-- /.box-body -->
 			<div class="box-footer">
 			<?=$pagination;?>
