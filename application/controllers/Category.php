@@ -20,7 +20,6 @@ class Category extends AdminController {
 
 	// 添加分类
 	public function add() {
-		// 页面传递进一个父类id，那么需要将下拉选择器的选中当前，如果编辑时那样
 		$objectId = $this->input->get('objectId');
 		$data['objectId'] = $objectId;
 		// 全部分类
@@ -30,7 +29,17 @@ class Category extends AdminController {
 
 	// 编辑分类
 	public function edit() {
-
+		$objectId = $this->input->get('objectId');
+		$isEdit = $this->input->get('isEdit');
+		$currentCategory = null;
+		// 编辑状态，读取原来分类信息
+		$query = new Query('Category');
+		$currentCategory = $query->get($objectId);
+		$data['objectId'] = $objectId;
+		// 全部分类
+		$data['categories'] = $this->category_model->findAll();
+		$data['currentCategory'] = $currentCategory;
+		$this->layout->view('category/add', $data);
 	}
 	
 	// 保存分类
@@ -62,9 +71,14 @@ class Category extends AdminController {
 			// banner图
 		}
 		// save to leanCloud
-		$object = new Object("Category");
-		$object->set("avatar", $avatar);
-		$object->set("banner", $banner);
+		// 添加还是编辑
+		$status = $this->input->post('status');
+		if ($status == 'edit') {
+			// 编辑状态
+			$object = Object::create('Category', $objectId);
+		} else {
+			$object = new Object("Category");
+		}
 		// 获取参数
 		$title = $this->input->post('title');
 		// 标题
@@ -73,6 +87,9 @@ class Category extends AdminController {
 		$object->set("parent", $category);
 		// 序号
 		$object->set("index", (int)$index);
+		// 图片
+		$object->set("avatar", $avatar);
+		$object->set("banner", $banner);
 		// 提示信息 
 		$data['redirect'] = 'index';
 		try {

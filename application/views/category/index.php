@@ -34,6 +34,7 @@
                     <!-- 读取大类名称 -->
                     <th style="width: 70%;"><?=$category->get('title')?></th>
                     <th><a type="button" class="btn btn-primary" href="add?objectId=<?=$category->get('objectId')?>">添加</a></th>
+                    <th><a type="button" class="btn btn-info" href="edit?objectId=<?=$category->get('objectId')?>">修改</a></th>
                     <th><a type="button" class="btn btn-danger delete" href="delete?objectId=<?=$category->get('objectId')?>">删除</a></th>
 
                   </tr>
@@ -47,6 +48,9 @@
                     </td>
                     <td>
                       <a type="button" class="btn btn-primary" href="add?objectId=<?=$child->get('objectId')?>">添加</a>
+                    </td>
+                    <td>
+                      <a type="button" class="btn btn-info" href="edit?objectId=<?=$child->get('objectId')?>">修改</a>
                     </td>
                     <td>
                       <a type="button" class="btn btn-danger delete" href="delete?objectId=<?=$child->get('objectId')?>">删除</a>
