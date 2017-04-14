@@ -1,10 +1,8 @@
 <!-- 引入bs-confirmation -->
 <script src="/bower_components/bs-confirmation/bootstrap-confirmation.js"></script>
-<style>
-	.btn-margin {
-		margin: 2px;
-	}
-</style>
+<!-- 引入css -->
+<link rel="stylesheet" type="text/css" href="/assets/css/global.css">
+
 <div class="content-wrapper">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">

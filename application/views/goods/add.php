@@ -1,11 +1,11 @@
 <!--引入CSS-->
 <link rel="stylesheet" type="text/css" href="/bower_components/fex-webuploader/dist/webuploader.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/webuploader.css">
-<link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/select2/select2.min.css">
-<!-- Select2 -->
-<script src="/assets/node_modules/admin-lte/plugins/select2/select2.full.min.js"></script>
 <!--引入JS-->
 <script type="text/javascript" src="/bower_components/fex-webuploader/dist/webuploader.js"></script>
+<!-- Select2 -->
+<link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/select2/select2.min.css">
+<script src="/assets/node_modules/admin-lte/plugins/select2/select2.full.min.js"></script>
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -43,7 +43,7 @@
                   <div class="col-sm-8">
                     <select class="form-control select2" style="width: 100%;" name="category">
                       <option selected="selected" value="">请选择</option>
-                      <?foreach ($categoris as $category):?>
+                      <?foreach ($categories as $category):?>
                         <optgroup label="<?=$category->get('title')?>">
                           <?foreach ($category->children as $child):?>
                             <option value="<?=$child->get('objectId')?>"><?=$child->get('title')?></option>
