@@ -41,6 +41,7 @@ class Goods extends AdminController {
 		$object->set("images", json_decode($images));
 		$object->set("detail", json_decode($detail));
 
+		$data['redirect'] = 'add';
 		try {
 			$object->save();
 			// echo json_encode(['msg' => '发布成功']);
@@ -50,9 +51,10 @@ class Goods extends AdminController {
 		} catch (Exception $ex) {
 			$data['msg'] = '操作失败';
 			$data['level'] = 'warning';
-			$this->layout->view('goods/msg', $data);
 			// echo json_encode(['msg'] => '操作失败');
 			// var_dump($ex);
+		} finally {
+			$this->layout->view('goods/msg', $data);
 		}
 	}
 
@@ -95,6 +97,7 @@ class Goods extends AdminController {
 		$goods->destroy();
 		$data['msg'] = '删除成功';
 		$data['level'] = 'info';
+		$data['redirect'] = 'index';
 		$this->layout->view('goods/msg', $data);
 	}
 }

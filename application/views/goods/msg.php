@@ -33,7 +33,7 @@
               </div>
               <script type="text/javascript">
                 $('#goBack').click(function () {
-                  history.back();
+                  window.location = '<?=$redirect?>';
                 });
               </script>
               <!-- /.box-footer -->
