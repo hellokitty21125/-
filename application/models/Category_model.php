@@ -3,13 +3,7 @@ use \LeanCloud\Query;
 use \LeanCloud\Object;
 
 class Category_model extends CI_Model {
-	public function find($parent = null) {
-		$query = new Query("Category");
-		$query->equalTo('parent', $parent);
-		$categoris = $query->find();
-		return $categoris;
-	}
-
+	// 获取全部分类
 	public function findAll() {
 		// 1. 查询所有顶级分类
 		$query = new Query("Category");

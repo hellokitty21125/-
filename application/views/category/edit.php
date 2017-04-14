@@ -19,7 +19,7 @@
   <section class="content">
     <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">添加</h3>
+              <h3 class="box-title">修改</h3>
                 <div class="box-tools pull-right">
                 <a class="btn btn-sm btn-info" href="index">返回列表</a>
                 </div><!-- /.box-tools -->
@@ -28,10 +28,12 @@
             <!-- form start -->
             <div class="box-body">
               <form class="form-horizontal" action="save" method="post" enctype="multipart/form-data">
+                <!-- 原objectId值，用于保存 -->
+                <input type="hidden" name="editingId" value="<?=$editingId?>" />
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入分类的标题" value="">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入分类的标题" value="<?=$editingCategory->get('title');?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -51,7 +53,7 @@
                 <div class="form-group">
                   <label for="index" class="col-sm-2 control-label">序号</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="index" id="index" placeholder="最小最靠前"value="">
+                    <input type="number" class="form-control" name="index" id="index" placeholder="最小最靠前"value="<?=$editingCategory->get('index');?>">
                   </div>
                 </div>
                 <div class="form-group">

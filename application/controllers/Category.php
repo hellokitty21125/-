@@ -20,6 +20,7 @@ class Category extends AdminController {
 
 	// 添加分类
 	public function add() {
+		// 父类category对象的objectId
 		$objectId = $this->input->get('objectId');
 		$data['objectId'] = $objectId;
 		// 全部分类
@@ -29,17 +30,21 @@ class Category extends AdminController {
 
 	// 编辑分类
 	public function edit() {
+		// 正在编辑的category对象的objectId值
 		$objectId = $this->input->get('objectId');
-		$isEdit = $this->input->get('isEdit');
-		$currentCategory = null;
+		$data['editingId'] = $objectId;
 		// 编辑状态，读取原来分类信息
 		$query = new Query('Category');
-		$currentCategory = $query->get($objectId);
-		$data['objectId'] = $objectId;
+		$editingCategory = $query->get($objectId);
+		// 判断是否已经是顶级分类了
+		$data['objectId'] = '';
+		if ($editingCategory->get('parent') != null) {
+			$data['objectId'] = $editingCategory->get('parent')->get('objectId');
+		} 
 		// 全部分类
 		$data['categories'] = $this->category_model->findAll();
-		$data['currentCategory'] = $currentCategory;
-		$this->layout->view('category/add', $data);
+		$data['editingCategory'] = $editingCategory;
+		$this->layout->view('category/edit', $data);
 	}
 	
 	// 保存分类
@@ -71,13 +76,12 @@ class Category extends AdminController {
 			// banner图
 		}
 		// save to leanCloud
-		// 添加还是编辑
-		$status = $this->input->post('status');
-		if ($status == 'edit') {
-			// 编辑状态
-			$object = Object::create('Category', $objectId);
-		} else {
-			$object = new Object("Category");
+		$object = new Object("Category");
+		$editingId = $this->input->post('editingId');
+		// 默认是新建一个Category对象，如果存在$editingId，则读取
+		if (isset($editingId)) {
+			$query = new Query('Category');
+			$object = $query->get($editingId);
 		}
 		// 获取参数
 		$title = $this->input->post('title');
@@ -94,7 +98,7 @@ class Category extends AdminController {
 		$data['redirect'] = 'index';
 		try {
 			$object->save();
-			$data['msg'] = '创建成功';
+			$data['msg'] = '保存成功';
 			$data['level'] = 'info';
 			$this->layout->view('category/msg', $data);
 		} catch (Exception $ex) {
