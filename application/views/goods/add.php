@@ -49,7 +49,7 @@
                             <option value="<?=$child->get('objectId')?>"><?=$child->get('title')?></option>
                           <?php endforeach;?>
                         </optgroup>
-                      <?endforeach;?>
+                      <?php endforeach;?>
                     </select>
                   </div>
                 </div>
