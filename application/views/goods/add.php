@@ -45,9 +45,9 @@
                       <option></option>
                       <?php foreach ($categories as $category):?>
                         <optgroup label="<?=$category->get('title')?>">
-                          <?foreach ($category->children as $child):?>
+                          <?php foreach ($category->children as $child):?>
                             <option value="<?=$child->get('objectId')?>"><?=$child->get('title')?></option>
-                          <?endforeach;?>
+                          <?php endforeach;?>
                         </optgroup>
                       <?endforeach;?>
                     </select>
