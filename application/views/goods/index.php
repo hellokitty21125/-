@@ -43,7 +43,7 @@
 								<td><?=$item->get('title')?></td>
 								<td><?=$item->get('category') == NULL ? '' : $item->get('category')->get('title')?></td>
 								<td><?=$item->get('price')?></td>
-								<td><a type="button" class="btn btn-info delete" href="delete?objectId=<?=$item->get('objectId')?>">删除</a></td>
+								<td><a type="button" class="btn btn-danger delete" href="delete?objectId=<?=$item->get('objectId')?>">删除</a></td>
 							</tr>
 						<?php endforeach;?>
 					</tbody>
