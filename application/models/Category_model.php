@@ -15,10 +15,13 @@ class Category_model extends CI_Model {
 		$query->equalTo('parent', null);
 		$categoris = $query->find();
 		// 2. sub
-		foreach ($categoris as $parent) {
-			$query->equalTo('parent', $parent);
+		foreach ($categoris as $category) {
+			$query->equalTo('parent', $category);
 			$children = $query->find();
-			$result[$parent->get('title')] = $children;
+			// 不必使用转数组再动态添加成员属性，$category = $category->toJSON();object同样可以实现操作
+			$category->children = $children;
+			$result[] = $category;
+
 		}
 		return $result;
 	}

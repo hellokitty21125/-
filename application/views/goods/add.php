@@ -43,9 +43,9 @@
                   <div class="col-sm-8">
                     <select class="form-control select2" style="width: 100%;" name="category">
                       <option selected="selected" value="">请选择</option>
-                      <?foreach ($categoris as $parent => $children):?>
-                        <optgroup label="<?=$parent?>">
-                          <?foreach ($children as $child):?>
+                      <?foreach ($categoris as $category):?>
+                        <optgroup label="<?=$category->get('title')?>">
+                          <?foreach ($category->children as $child):?>
                             <option value="<?=$child->get('objectId')?>"><?=$child->get('title')?></option>
                           <?endforeach;?>
                         </optgroup>
