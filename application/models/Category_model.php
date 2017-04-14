@@ -1,5 +1,6 @@
 <?php
 use \LeanCloud\Query;
+use \LeanCloud\Object;
 
 class Category_model extends CI_Model {
 	public function find($parent = null) {
@@ -28,8 +29,8 @@ class Category_model extends CI_Model {
 
 	// 删除分类
 	public function delete($objectId) {
-		$goods = Object::create('Goods', $objectId);
-		$goods->destroy();
+		$category = Object::create('Category', $objectId);
+		$category->destroy();
 	}
 }
 ?>
