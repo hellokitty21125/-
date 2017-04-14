@@ -1,7 +1,7 @@
 <!--引入CSS-->
-<link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/select2/select2.min.css">
+<link rel="stylesheet" href="/bower_components/AdminLTE/plugins/select2/select2.min.css">
 <!-- Select2 -->
-<script src="/assets/node_modules/admin-lte/plugins/select2/select2.full.min.js"></script>
+<script src="/bower_components/AdminLTE/plugins/select2/select2.full.min.js"></script>
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->

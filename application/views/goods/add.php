@@ -4,8 +4,8 @@
 <!--引入JS-->
 <script type="text/javascript" src="/bower_components/fex-webuploader/dist/webuploader.js"></script>
 <!-- Select2 -->
-<link rel="stylesheet" href="/assets/node_modules/admin-lte/plugins/select2/select2.min.css">
-<script src="/assets/node_modules/admin-lte/plugins/select2/select2.full.min.js"></script>
+<link rel="stylesheet" href="/bower_components/AdminLTE/plugins/select2/select2.min.css">
+<script src="/bower_components/AdminLTE/plugins/select2/select2.full.min.js"></script>
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
