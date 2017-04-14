@@ -322,7 +322,7 @@
               </ul>
             </li>
             <li>
-              <a href="../manager/logout" data-toggle="control-sidebar"><i class="fa fa-eject"></i> 退出</a>
+              <a href="../manager/logout"><i class="fa fa-eject"></i> 退出</a>
             </li>
           </ul>
         </div>

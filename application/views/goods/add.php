@@ -693,7 +693,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" id="submit" class="btn btn-info">保存</button>
+                <button type="submit" id="submit" class="btn btn-primary">保存</button>
               </div>
               <!-- /.box-footer -->
             </form>
