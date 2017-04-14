@@ -45,8 +45,8 @@
                         <option <?=$category->get('objectId') == $objectId ? 'selected' : '' ?> value="<?=$category->get('objectId')?>">|--<?=$category->get('title')?></option>
                           <?php foreach ($category->children as $child):?>
                             <option <?=$child->get('objectId') == $objectId ? 'selected' : '' ?> value="<?=$child->get('objectId')?>">|--|--<?=$child->get('title')?></option>
-                          <?endforeach;?>
-                      <?endforeach;?>
+                          <?php endforeach;?>
+                      <?php endforeach;?>
                     </select>
                   </div>
                 </div>

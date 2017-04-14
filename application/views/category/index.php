@@ -56,7 +56,7 @@
                       <a type="button" class="btn btn-danger delete" href="delete?objectId=<?=$child->get('objectId')?>">删除</a>
                     </td>
                   </tr>
-                  <?endforeach;?>
+                  <?php endforeach;?>
                 </tbody>
               </table>
               <?php endforeach;?>
