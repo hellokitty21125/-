@@ -44,28 +44,35 @@ class Category extends AdminController {
 		}
 		// 序号
 		$index = $this->input->post('index');
+		$avatar = null;
 		// 分类图片上传
-		$avatar = File::createWithLocalFile($_FILES['avatar']['tmp_name'], $_FILES['avatar']['type']);
-		// 保存图片
-		$avatar->save();
+		if (!empty($_FILES['avatar']['tmp_name'])) {
+			echo 'hi';
+			$banner = File::createWithLocalFile($_FILES['avatar']['tmp_name'], $_FILES['avatar']['type']);
+			// 保存图片
+			$avatar->save();
+			// 分类图
+		}
+		$banner = null;
 		// banner图片上传
-		$banner = File::createWithLocalFile($_FILES['banner']['tmp_name'], $_FILES['banner']['type']);
-		// 保存图片
-		$banner->save();
-		// 获取参数
-		$title = $this->input->post('title');
+		if (!empty($_FILES['avatar']['banner'])) {
+			$banner = File::createWithLocalFile($_FILES['banner']['tmp_name'], $_FILES['banner']['type']);
+			// 保存图片
+			$banner->save();
+			// banner图
+		}
 		// save to leanCloud
 		$object = new Object("Category");
+		$object->set("avatar", $avatar);
+		$object->set("banner", $banner);
+		// 获取参数
+		$title = $this->input->post('title');
 		// 标题
 		$object->set("title", $title);
 		// 将category转为LeanCloud对象
-		$object->set("category", $category);
+		$object->set("parent", $category);
 		// 序号
-		// $object->set("index", $index);
-		// 分类图
-		$object->set("avatar", $avatar);
-		// banner图
-		$object->set("banner", $banner);
+		$object->set("index", (int)$index);
 		// 提示信息 
 		$data['redirect'] = 'index';
 		try {
@@ -76,7 +83,7 @@ class Category extends AdminController {
 		} catch (Exception $ex) {
 			$data['msg'] = '操作失败';
 			$data['level'] = 'warning';
-			// var_dump($ex);
+			var_dump($ex);
 		} finally {
 			$this->layout->view('category/msg', $data);
 		}
