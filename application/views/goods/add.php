@@ -42,7 +42,7 @@
                   <label for="title" class="col-sm-2 control-label">分类</label>
                   <div class="col-sm-8">
                     <select class="form-control select2" style="width: 100%;" name="category">
-                      <option selected="selected" value="">请选择</option>
+                      <option></option>
                       <?foreach ($categories as $category):?>
                         <optgroup label="<?=$category->get('title')?>">
                           <?foreach ($category->children as $child):?>
@@ -701,8 +701,3 @@
   </section>
   <!-- /.content -->
 </div>
-<script>
-  $(function () { 
-    $("[data-toggle='popover']").popover();
-  });
-</script>
