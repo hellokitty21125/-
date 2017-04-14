@@ -43,7 +43,7 @@
                   <div class="col-sm-8">
                     <select class="form-control select2" style="width: 100%;" name="category">
                       <option></option>
-                      <?foreach ($categories as $category):?>
+                      <?php foreach ($categories as $category):?>
                         <optgroup label="<?=$category->get('title')?>">
                           <?foreach ($category->children as $child):?>
                             <option value="<?=$child->get('objectId')?>"><?=$child->get('title')?></option>

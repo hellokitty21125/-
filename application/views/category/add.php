@@ -39,9 +39,9 @@
                   <div class="col-sm-8">
                     <select class="form-control select2" style="width: 100%;" name="category">
                       <option value="">顶级分类</option>
-                      <?foreach ($categories as $category):?>
+                      <?php foreach ($categories as $category):?>
                         <option <?=$category->get('objectId') == $objectId ? 'selected' : '' ?> value="<?=$category->get('objectId')?>">|--<?=$category->get('title')?></option>
-                          <?foreach ($category->children as $child):?>
+                          <?php foreach ($category->children as $child):?>
                             <option <?=$child->get('objectId') == $objectId ? 'selected' : '' ?> value="<?=$child->get('objectId')?>">|--|--<?=$child->get('title')?></option>
                           <?endforeach;?>
                       <?endforeach;?>

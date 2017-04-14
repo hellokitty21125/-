@@ -41,7 +41,7 @@
                 </thead>
                 <tbody>
                   <!-- 遍历子类 -->
-                  <?foreach ($category->children as $child):?>
+                  <?php foreach ($category->children as $child):?>
                   <tr>
                     <td>
                       <div class="col-xs-offset-2"><?=$child->get('title')?></div>
