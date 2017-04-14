@@ -33,7 +33,7 @@
                   <tr>
                     <!-- 读取大类名称 -->
                     <th style="width: 70%;"><?=$category->get('title')?></th>
-                    <th><a type="button" class="btn btn-primary delete" href="add?objectId=<?=$category->get('objectId')?>">添加</a></th>
+                    <th><a type="button" class="btn btn-primary" href="add?objectId=<?=$category->get('objectId')?>">添加</a></th>
                     <th><a type="button" class="btn btn-danger delete" href="delete?objectId=<?=$category->get('objectId')?>">删除</a></th>
 
                   </tr>
@@ -46,7 +46,7 @@
                       <div class="col-xs-offset-2"><?=$child->get('title')?></div>
                     </td>
                     <td>
-                      <a type="button" class="btn btn-primary delete" href="delete?objectId=<?=$child->get('objectId')?>">添加</a>
+                      <a type="button" class="btn btn-primary" href="add?objectId=<?=$child->get('objectId')?>">添加</a>
                     </td>
                     <td>
                       <a type="button" class="btn btn-danger delete" href="delete?objectId=<?=$child->get('objectId')?>">删除</a>
