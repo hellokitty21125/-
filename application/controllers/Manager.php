@@ -7,7 +7,7 @@ class Manager extends BaseController {
 	public function login() {
 		// 首先判断是否已经登录
 		if (User::getCurrentUser() == null) {
-			$this->load->view('login');
+			$this->load->view('manager/login');
 		} else {
 			redirect('../dashboard/index');
 		}
@@ -39,6 +39,14 @@ class Manager extends BaseController {
 	// 修改密码
 	public function profile() {
 		$this->layout->view('manager/profile');
+	}
+
+	// 保存资料
+	public function save() {
+		$data['msg'] = '操作成功';
+		$data['level'] = 'info';
+		$data['redirect'] = 'profile';
+		$this->layout->view('manager/msg', $data);
 	}
 }
 ?>
