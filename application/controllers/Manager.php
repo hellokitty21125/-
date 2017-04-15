@@ -35,5 +35,10 @@ class Manager extends BaseController {
 			echo '用户名或密码错误';
 		}
 	}
+
+	// 修改密码
+	public function profile() {
+		$this->layout->view('manager/profile');
+	}
 }
 ?>
