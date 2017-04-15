@@ -29,4 +29,18 @@ class Order extends AdminController {
 		$data['pagination'] = $this->pagination->create_links();
 		$this->layout->view('order/index', $data);
 	}
+
+	// 改变订单状态
+	public function deal() {
+		$objectId = $this->input->get('objectId');
+		$status = $this->input->get('status');
+		$order = Object::create('Order', $objectId);
+		$order->set('status', $status);
+		// $order->save();
+		$data['msg'] = '操作成功';
+		$data['level'] = 'info';
+		$data['redirect'] = 'index';
+		$this->layout->view('order/msg', $data);
+
+	}
 }

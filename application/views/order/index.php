@@ -33,10 +33,30 @@
             <?php foreach($result as $item):?>
               <tr>
                 <td><?php echo $item->get('objectId');?></td>
-                <td><?php echo $item->get('status') == 0 ? '待付款' : '已付款';?></td>
+                <td>
+                  <?php 
+                    switch ($item->get('status')) {
+                      case 0:
+                        echo '待付款';
+                        break;
+                      case 1:
+                        echo '已付款';
+                        break;
+                      default:
+                        echo '待收货';
+                        break;
+                    }
+                  ?>
+                </td>
                 <td><?=$item->get('amount')?></td>
                 <td><?=$item->get('updatedAt')->setTimeZone(new DateTimeZone("PRC"))->format('Y-m-d H:i:s');?></td>
-                <td><button class="btn btn-primary">发货</button></td>
+                <td>
+                  <?php if ($item->get('status') == 1):?>
+                    <a href="deal?objectId=<?=$item->get('objectId')?>&status=2" class="btn btn-primary">发货</a>
+                  <?php else:?>
+                    <a class="btn btn-primary disabled">发货</a>
+                  <?php endif;?>
+                </td>
               </tr>
             <?php endforeach;?>
           </tbody>
