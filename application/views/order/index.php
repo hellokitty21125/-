@@ -15,7 +15,6 @@
       <div class="box-header with-border">
         <h3 class="box-title"><?=$title?></h3>
         <div class="box-tools pull-right">
-          <a class="btn btn-sm btn-info" href="add">添加</a>
         </div><!-- /.box-tools -->
       </div><!-- /.box-header -->
       <div class="box-body">
@@ -23,6 +22,8 @@
           <thead>
             <tr>
               <th>订单号</th>
+              <th>买家</th>
+              <th>地址</th>
               <th>状态</th>
               <th>金额</th>
               <th>日期</th>
@@ -32,7 +33,9 @@
           <tbody>
             <?php foreach($result as $item):?>
               <tr>
-                <td><?php echo $item->get('objectId');?></td>
+                <td><?=$item->get('objectId')?></td>
+                <td><?=$item->get('user') != null ? $item->get('user')->get('nickName') : '-'?></td>
+                <td><?=$item->get('address') != null ? $item->get('address')->get('province').$item->get('address')->get('city').$item->get('address')->get('region').$item->get('address')->get('detail') : '-'?></td>
                 <td>
                   <?php 
                     switch ($item->get('status')) {

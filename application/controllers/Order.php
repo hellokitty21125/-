@@ -13,6 +13,7 @@ class Order extends AdminController {
 		// 分页查询数据
 		$query = new Query("Order");
 		$query->_include('user');
+		$query->_include('address');
 		$query->descend("createdAt");
 		$query->limit($this->config->item('per_page'));
 		$query->skip($this->config->item('per_page') * ($pageIndex - 1));
