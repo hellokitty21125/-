@@ -293,7 +293,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
           <li class="header">系统菜单</li>
-          <li class="active treeview">
+          <li class="<?=strpos(uri_string(), 'goods') !== false || strpos(uri_string(), 'category') !== false ? 'active' : ''?> treeview">
             <a href="#">
               <i class="fa fa-dashboard"></i> <span>商品管理</span>
               <span class="pull-right-container">
@@ -301,11 +301,11 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="active"><a href="../goods/index"><i class="fa fa-list-ul"></i> 商品列表</a></li>
-              <li><a href="../category/index"><i class="fa fa-sitemap"></i> 商品分类</a></li>
+              <li class="<?=uri_string() == 'goods/index' ? 'active' : ''?>"><a href="../goods/index"><i class="fa fa-list-ul"></i> 商品列表</a></li>
+              <li class="<?=uri_string() == 'category/index' ? 'active' : ''?>"><a href="../category/index"><i class="fa fa-sitemap"></i> 商品分类</a></li>
             </ul>
           </li>
-          <li class="treeview">
+          <li class="<?=strpos(uri_string(), 'order') !== false ? 'active' : ''?> treeview">
             <a href="#">
               <i class="fa fa-shopping-cart"></i>
               <span>订单管理</span>
@@ -314,10 +314,10 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../order/index"><i class="fa fa-shopping-bag"></i> 订单列表</a></li>
+              <li class="<?=uri_string() == 'order/index' ? 'active' : ''?>"><a href="../order/index"><i class="fa fa-shopping-bag"></i> 订单列表</a></li>
             </ul>
           </li>
-          <li class="treeview">
+          <li class="<?=strpos(uri_string(), 'manager') !== false ? 'active' : ''?> treeview">
             <a href="#">
               <i class="fa fa-gears"></i>
               <span>系统设置</span>
@@ -326,7 +326,7 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="../manager/profile"><i class="fa fa-user"></i> 修改资料</a></li>
+              <li class="<?=uri_string() == 'manager/profile' ? 'active' : ''?>"><a href="../manager/profile"><i class="fa fa-user"></i> 修改资料</a></li>
             </ul>
           </li>
         </ul>
