@@ -36,8 +36,8 @@ class Order extends AdminController {
 		$objectId = $this->input->get('objectId');
 		$status = $this->input->get('status');
 		$order = Object::create('Order', $objectId);
-		$order->set('status', $status);
-		// $order->save();
+		$order->set('status', (int)$status);
+		$order->save();
 		$data['msg'] = '操作成功';
 		$data['level'] = 'info';
 		$data['redirect'] = 'index';
