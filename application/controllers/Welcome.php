@@ -1,7 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require_once __DIR__ . '/../../vendor/autoload.php';
-// require_once __DIR__ . '/../../vendor/leancloud/leancloud-sdk/src/autoload.php';
 
 class Welcome extends CI_Controller {
 
@@ -23,11 +21,5 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('index');
-	}
-	
-	public function lean() {
-		LeanCloud\Client::initialize("FwXizf8zlFEMKtCoxwe5q3Ef-gzGzoHsz", "NwsIpoDzCVedWjnKwv7qy8Dd", "qFIU9RmLWMIkTw1SQXRTdOUO");
-		var_dump( LeanCloud\Client::get("/date") ); // 获取服务器时间
-		
 	}
 }
