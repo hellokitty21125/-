@@ -97,7 +97,7 @@
         }).then(function (response) {
           this.$message({
             type: response.data.success ? 'success' : 'error',
-            message: response.data.msg
+            message: response.data.message
           });
         });
       }

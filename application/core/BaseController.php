@@ -14,8 +14,8 @@ class BaseController extends CI_Controller {
 	}
 
 	// 格式化输出
-	function echo_json($msg, $success = true) {
-		$data = ['msg' => $msg, 'success' => $success];
+	function echo_json($message, $success = true) {
+		$data = ['message' => $message, 'success' => $success];
 		header('Content-type: application/json;charset=UTF-8');
 		echo json_encode($data);
 	}

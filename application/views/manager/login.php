@@ -105,7 +105,7 @@
 					if (response.data.success) {
 						this.$message({
 							type: 'success',
-							message: response.data.msg, 
+							message: response.data.message, 
 							duration: 500,
 							onClose: function() {
 								window.location.href = '../dashboard/index';
@@ -114,7 +114,7 @@
 					} else {
 						this.$message({
 							type: 'error',
-							message: response.data.msg
+							message: response.data.message
 						});
 					}
 				});
