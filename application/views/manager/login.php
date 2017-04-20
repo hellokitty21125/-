@@ -104,6 +104,7 @@
 					console.log(response.data);
 					if (response.data.success) {
 						this.$message({
+							type: 'success',
 							message: response.data.msg, 
 							duration: 500,
 							onClose: function() {
@@ -111,7 +112,10 @@
 							}
 						});
 					} else {
-						this.$message(response.data.msg);
+						this.$message({
+							type: 'error',
+							message: response.data.msg
+						});
 					}
 				});
 			}
