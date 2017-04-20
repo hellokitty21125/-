@@ -3,6 +3,10 @@
 use LeanCloud\User;
 
 class Manager extends BaseController {
+	function __construct() {
+		parent::__construct();
+		$this->load->model('Manager_model', 'manager_model');
+	}
 	// 管理员登录
 	public function login() {
 		// 首先判断是否已经登录
@@ -23,12 +27,7 @@ class Manager extends BaseController {
 	public function verify() {
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		var_dump($this->input->post());
-		var_dump($username);
-		var_dump($password);
-		// User::logIn("Tom", "cat!@#123");
-		User::logIn($username, $password);
-		if (User::getCurrentUser() != null) {
+		if ($this->manager_model->verify($username, $password)) {
 			// 登录成功跳转
 			redirect('../dashboard/index');
 		} else {
