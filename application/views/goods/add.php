@@ -10,10 +10,6 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>
-      商品管理
-      <small>Goods</small>
-    </h1>
     <ol class="breadcrumb">
       <li><a href="../dashboard/index"><i class="fa fa-dashboard"></i> 首页</a></li>
       <li class="active">商品管理</li>

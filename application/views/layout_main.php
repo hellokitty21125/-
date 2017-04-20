@@ -22,6 +22,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="/bower_components/AdminLTE/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="/assets/css/global.css">
   <!-- jQuery 2.2.3 -->
   <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
   <!-- Bootstrap 3.3.6 -->
