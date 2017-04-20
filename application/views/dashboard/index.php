@@ -31,12 +31,6 @@
   <!-- Slimscroll -->
   <script src="/bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js"></script>
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-        <section class="content-header">
-      <ol class="breadcrumb">
-        <li><a href="../dashboard/index"><i class="fa fa-dashboard"></i>首页</a></li>
-      </ol>
-    </section>
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
