@@ -79,7 +79,7 @@
 		            -->		              </div>
 		            <!-- /.box-body -->
 		            <div class="box-footer">
-		            	<button type="button" @click="login" class="btn btn-info">登录</button>
+		            	<button type="button" @click="login" class="btn btn-primary">登录</button>
 		            </div>
 		            <!-- /.box-footer -->
 		        </form>

@@ -21,7 +21,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">修改</h3>
                 <div class="box-tools pull-right">
-                <a class="btn btn-sm btn-info" href="index">返回列表</a>
+                <a class="btn btn-sm btn-primary" href="index">返回列表</a>
                 </div><!-- /.box-tools -->
             </div>
             <!-- /.box-header -->

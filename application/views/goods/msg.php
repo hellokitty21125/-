@@ -16,7 +16,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">操作提示</h3>
                 <div class="box-tools pull-right">
-                <a class="btn btn-sm btn-info" href="index">返回列表</a>
+                <a class="btn btn-sm btn-primary" href="index">返回列表</a>
                 </div><!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
@@ -29,7 +29,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" id="goBack" class="btn btn-info">返回</button>
+                <button type="submit" id="goBack" class="btn btn-primary">返回</button>
               </div>
               <script type="text/javascript">
                 $('#goBack').click(function () {
