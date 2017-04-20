@@ -12,4 +12,11 @@ class BaseController extends CI_Controller {
 		Client::useMasterKey(true);
 		Client::setStorage(new CookieStorage());
 	}
+
+	// 格式化输出
+	function echo_json($msg, $success = true) {
+		$data = ['msg' => $msg, 'success' => $success];
+		header('Content-type: application/json;charset=UTF-8');
+		echo json_encode($data);
+	}
 }

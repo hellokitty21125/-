@@ -29,9 +29,11 @@ class Manager extends BaseController {
 		$password = $this->input->post('password');
 		if ($this->manager_model->verify($username, $password)) {
 			// 登录成功跳转
-			redirect('../dashboard/index');
+			// redirect('../dashboard/index');
+			$this->echo_json('登录成功');
 		} else {
-			echo '用户名或密码错误';
+			// 给出弹窗提示
+			$this->echo_json('用户名或密码错误', false);
 		}
 	}
 

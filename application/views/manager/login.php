@@ -24,6 +24,13 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
   folder instead of downloading all of them to reduce the load. -->
   <link href="https://cdn.bootcss.com/admin-lte/2.3.11/css/skins/_all-skins.min.css" rel="stylesheet">
+    <!-- 引入 Vue -->
+  <script src="https://cdn.bootcss.com/vue/2.2.4/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="https://cdn.bootcss.com/element-ui/1.2.5/index.js"></script>
+  <!-- 引入ele.css -->
+  <link href="https://cdn.bootcss.com/element-ui/1.2.5/theme-default/index.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/vue-resource/1.3.1/vue-resource.min.js"></script>
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -44,20 +51,20 @@
 						</div>
 						<!-- /.box-header -->
 						<!-- form start -->
-						<form class="form-horizontal" action="verify" method="post">
+						<form id="login" class="form-horizontal" action="verify" method="post">
 							<div class="box-body">
 								<div class="form-group">
 									<label for="username" class="col-sm-2 control-label">用户名</label>
 
 									<div class="col-sm-10">
-										<input type="text" class="form-control" name="username" value="" id="username" placeholder="请输入用户名">
+										<input type="text" class="form-control" placeholder="请输入用户名" v-model="username">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="password" class="col-sm-2 control-label">密码</label>
 
 									<div class="col-sm-10">
-										<input type="password" class="form-control" name="password" value="" id="password" placeholder="请输入密码">
+										<input type="password" class="form-control" placeholder="请输入密码" v-model="password">
 									</div>
 								</div>
 <!-- 		                <div class="form-group">
@@ -72,7 +79,7 @@
 		            -->		              </div>
 		            <!-- /.box-body -->
 		            <div class="box-footer">
-		            	<button type="submit" class="btn btn-info">登录</button>
+		            	<button type="button" @click="login" class="btn btn-info">登录</button>
 		            </div>
 		            <!-- /.box-footer -->
 		        </form>
@@ -80,6 +87,37 @@
 		</div>
 	</div>
 </div>
+<!-- bind click -->
+<script type="text/javascript">
+	Vue.http.options.emulateJSON = true;
+	new Vue({
+		el: '#login',
+		data: {
+			username: '',
+			password: ''
+		},
+		methods: {
+			login: function() {
+				console.log(this.username);
+				console.log(this.password);
+				this.$http.post('verify', {username: this.username, password: this.password}).then(response => {
+					console.log(response.data);
+					if (response.data.success) {
+						this.$message({
+							message: response.data.msg, 
+							duration: 500,
+							onClose: function() {
+								window.location.href = '../dashboard/index';
+							}
+						});
+					} else {
+						this.$message(response.data.msg);
+					}
+				});
+			}
+		}
+	});
+</script>
 <!-- ./wrapper -->
 </body>
 </html>
