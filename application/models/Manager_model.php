@@ -13,6 +13,5 @@ class Manager_model extends CI_Model {
 		} catch (Exception $ex) {
 			return false;
 		}
-		return false;
 	}
 }

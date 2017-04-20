@@ -30,6 +30,13 @@
   <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <!-- AdminLTE App -->
   <script src="/bower_components/AdminLTE/dist/js/app.min.js"></script>
+  <!-- 引入 Vue -->
+  <script src="https://cdn.bootcss.com/vue/2.2.4/vue.js"></script>
+  <!-- 引入组件库 -->
+  <script src="https://cdn.bootcss.com/element-ui/1.2.5/index.js"></script>
+  <!-- 引入ele.css -->
+  <link href="https://cdn.bootcss.com/element-ui/1.2.5/theme-default/index.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/vue-resource/1.3.1/vue-resource.min.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">

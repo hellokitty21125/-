@@ -37,6 +37,29 @@ class Manager extends BaseController {
 		}
 	}
 
+	// 管理员修改密码
+	public function updatePassword() {
+		$oldPassword = $this->input->post('oldPassword');
+		$newPassword = $this->input->post('newPassword');
+		try {
+			User:: getCurrentUser()->updatePassword($oldPassword, $newPassword);
+			$this->echo_json('密码修改成功', true);
+		} catch (Exception $e) {
+			switch ($e->getCode()) {
+				case 1:
+					$message = '密码不能为空';
+					break;
+				case 210:
+					$message = '旧密码错误';
+					break;
+				default:
+					$message = '密码修改失败:' . $e->getCode();
+					break;
+			}
+			$this->echo_json($message, false);
+		}
+	}
+
 	// 修改密码
 	public function profile() {
 		$this->layout->view('manager/profile');
