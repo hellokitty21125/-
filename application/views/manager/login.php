@@ -45,44 +45,35 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-offset-3 col-md-6" style="margin-top: 150px;">
-					<div class="box box-info">
+					<div id="login" class="box box-info">
 						<div class="box-header with-border">
 							<h3 class="box-title">用户登录</h3>
 						</div>
 						<!-- /.box-header -->
 						<!-- form start -->
-						<form id="login" class="form-horizontal" action="verify" method="post">
+						<form v-loading.body="loading" class="form-horizontal" action="verify" method="post">
 							<div class="box-body">
 								<div class="form-group">
 									<label for="username" class="col-sm-2 control-label">用户名</label>
 
 									<div class="col-sm-10">
-										<input type="text" class="form-control" placeholder="请输入用户名" v-model="username">
+										<input type="text" class="form-control" placeholder="请输入用户名" v-model="username" @keyup.13="login">
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="password" class="col-sm-2 control-label">密码</label>
 
 									<div class="col-sm-10">
-										<input type="password" class="form-control" placeholder="请输入密码" v-model="password">
+										<input type="password" class="form-control" placeholder="请输入密码" v-model="password" @keyup.13="login">
 									</div>
 								</div>
-<!-- 		                <div class="form-group">
-		                  <div class="col-sm-offset-2 col-sm-10">
-		                    <div class="checkbox">
-		                      <label>
-		                        <input type="checkbox"> Remember me
-		                      </label>
-		                    </div>
-		                  </div>
-		                </div>
-		            -->		              </div>
+							</div>
+				        </form>
 		            <!-- /.box-body -->
 		            <div class="box-footer">
 		            	<button type="button" @click="login" class="btn btn-primary">登录</button>
 		            </div>
 		            <!-- /.box-footer -->
-		        </form>
 		    </div>
 		</div>
 	</div>
@@ -94,12 +85,12 @@
 		el: '#login',
 		data: {
 			username: '',
-			password: ''
+			password: '',
+			loading: false
 		},
 		methods: {
 			login: function() {
-				console.log(this.username);
-				console.log(this.password);
+				this.loading = true;
 				this.$http.post('verify', {username: this.username, password: this.password}).then(response => {
 					console.log(response.data);
 					if (response.data.success) {
@@ -116,6 +107,7 @@
 							type: 'error',
 							message: response.data.message
 						});
+						this.loading = false;
 					}
 				});
 			}
