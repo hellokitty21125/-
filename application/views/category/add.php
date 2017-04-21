@@ -73,10 +73,4 @@
   </section>
   <!-- /.content -->
 </div>
-<script>
-  $(function () { 
-    $('select').select2({
-    });
-
-  });
-</script>
+<script src="/assets/js/category/edit.js"></script>
