@@ -61,15 +61,14 @@ class Category extends AdminController {
 		$avatar = null;
 		// 分类图片上传
 		if (!empty($_FILES['avatar']['tmp_name'])) {
-			echo 'hi';
-			$banner = File::createWithLocalFile($_FILES['avatar']['tmp_name'], $_FILES['avatar']['type']);
+			$avatar = File::createWithLocalFile($_FILES['avatar']['tmp_name'], $_FILES['avatar']['type']);
 			// 保存图片
 			$avatar->save();
 			// 分类图
 		}
 		$banner = null;
 		// banner图片上传
-		if (!empty($_FILES['avatar']['banner'])) {
+		if (!empty($_FILES['banner']['tmp_name'])) {
 			$banner = File::createWithLocalFile($_FILES['banner']['tmp_name'], $_FILES['banner']['type']);
 			// 保存图片
 			$banner->save();
