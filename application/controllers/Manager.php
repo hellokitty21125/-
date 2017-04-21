@@ -6,11 +6,12 @@ class Manager extends BaseController {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('Manager_model', 'manager_model');
+		$this->load->helper('acl');
 	}
 	// 管理员登录
 	public function login() {
 		// 首先判断是否已经登录
-		if (User::getCurrentUser() == null) {
+		if (!acl()) {
 			$this->load->view('manager/login');
 		} else {
 			redirect('../dashboard/index');
@@ -28,6 +29,10 @@ class Manager extends BaseController {
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		if ($this->manager_model->verify($username, $password)) {
+			if (!acl()) {
+				$this->echo_json('您没有相应权限', false);
+				return;
+			}
 			// 登录成功
 			$this->echo_json('登录成功');
 		} else {

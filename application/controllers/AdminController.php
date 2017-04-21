@@ -6,7 +6,8 @@ use \LeanCloud\User;
 class AdminController extends BaseController {
 	function __construct() {
 		parent::__construct();
-		if (User::getCurrentUser() == null) {
+		$this->load->helper('acl');
+		if (!acl()) {
 			redirect('../manager/login');
 		}
 	}
