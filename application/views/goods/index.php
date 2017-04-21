@@ -27,8 +27,9 @@
 							<th>缩略图</th>
 							<th>名称</th>
 							<th>分类</th>
-							<th>价格</th>
 							<th>状态</th>
+							<th>价格</th>
+							<th>修改</th>
 							<th>删除</th>
 						</tr>
 					</thead>
@@ -40,6 +41,7 @@
 								<td><?=$item->get('category') == NULL ? '' : $item->get('category')->get('title')?></td>
 								<td><?=$item->get('isLock') == true ? '锁定' : '未锁定'?></td>
 								<td><?=$item->get('price')?></td>
+								<td><a type="button" class="btn btn-primary <?=$item->get('isLock') == true ? ' disabled' : ''?>" href="edit?objectId=<?=$item->get('objectId')?>">修改</a></td>
 								<td><a type="button" class="btn btn-danger delete <?=$item->get('isLock') == true ? ' disabled' : ''?>" href="delete?objectId=<?=$item->get('objectId')?>">删除</a></td>
 							</tr>
 						<?php endforeach;?>

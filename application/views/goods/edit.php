@@ -19,7 +19,7 @@
   <section class="content">
     <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">添加</h3>
+              <h3 class="box-title">修改</h3>
                 <div class="box-tools pull-right">
                 <a class="btn btn-sm btn-primary" href="index">返回列表</a>
                 </div><!-- /.box-tools -->
@@ -31,7 +31,7 @@
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入商品的标题">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入商品的标题" value="<?=$goods->get('title')?>">
                   </div>
                 </div>
                 <div class="form-group">
@@ -52,7 +52,7 @@
                 <div class="form-group">
                   <label for="price" class="col-sm-2 control-label">价格</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="price" id="price" placeholder="0.0">
+                    <input type="number" class="form-control" name="price" id="price" placeholder="0.0" value="<?=$goods->get('price')?>">
                   </div>
                 </div>
                 <div class="form-group">

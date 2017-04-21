@@ -17,6 +17,16 @@ class Goods extends AdminController {
 		$data['title'] = '添加商品';
 		$this->layout->view('goods/add', $data);
 	}
+
+	public function edit() {
+		// 获取顶级分类
+		$data['categories'] = $this->category_model->findAll();
+		$objectId = $this->input->get('objectId');
+		$query = new Query('Goods');
+		$goods = $query->get($objectId);
+		$data['goods'] = $goods;
+		$this->layout->view('goods/edit', $data);
+	}
 	
 	public function save() {
 		// 获取参数
