@@ -59,14 +59,22 @@
                 <div class="form-group">
                   <label for="avatar" class="col-sm-2 control-label">分类图</label>
                   <div class="col-sm-8">
-                    <img class="avatar" src="<?=$editingCategory->get('avatar') != null ? $editingCategory->get('avatar')->get('url') : ''?>">
+                    <?php
+                      if ($editingCategory->get('avatar') != null) {
+                        echo '<img class="avatar" src="' . $editingCategory->get('avatar')->get('url') . '">';
+                      }
+                    ?>
                     <input type="file" name="avatar" id="avatar">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="banner" class="col-sm-2 control-label">横幅图</label>
                   <div class="col-sm-8">
-                    <img class="avatar" src="<?=$editingCategory->get('banner') != null ? $editingCategory->get('banner')->get('url') : ''?>">
+                    <?php
+                      if ($editingCategory->get('banner') != null) {
+                        echo '<img class="avatar" src="' . $editingCategory->get('banner')->get('url') . '">';
+                      }
+                    ?>
                     <input type="file" name="banner" id="banner">
                   </div>
                 </div>
