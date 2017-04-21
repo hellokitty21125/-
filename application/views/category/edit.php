@@ -2,7 +2,11 @@
 <link rel="stylesheet" href="/bower_components/AdminLTE/plugins/select2/select2.min.css">
 <!-- Select2 -->
 <script src="/bower_components/AdminLTE/plugins/select2/select2.full.min.js"></script>
-
+<style type="text/css">
+  .avatar {
+    width: 100px;
+  }
+</style>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -55,12 +59,14 @@
                 <div class="form-group">
                   <label for="avatar" class="col-sm-2 control-label">分类图</label>
                   <div class="col-sm-8">
+                    <img class="avatar" src="<?=$editingCategory->get('avatar') != null ? $editingCategory->get('avatar')->get('url') : ''?>">
                     <input type="file" name="avatar" id="avatar">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="banner" class="col-sm-2 control-label">横幅图</label>
                   <div class="col-sm-8">
+                    <img class="avatar" src="<?=$editingCategory->get('banner') != null ? $editingCategory->get('banner')->get('url') : ''?>">
                     <input type="file" name="banner" id="banner">
                   </div>
                 </div>
