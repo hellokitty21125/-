@@ -68,6 +68,11 @@ class Goods extends AdminController {
 		}
 	}
 
+	public function update() {
+		$isHot = $this->input->post('isHot');
+		var_dump($isHot);
+	}
+
 	// 商品列表-element
 	// public function index() {
 		// $data['title'] = '商品列表';

@@ -27,7 +27,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="box-body">
-              <form class="form-horizontal" action="save" method="post">
+              <form class="form-horizontal" action="update" method="post">
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
@@ -42,7 +42,7 @@
                       <?php foreach ($categories as $category):?>
                         <optgroup label="<?=$category->get('title')?>">
                           <?php foreach ($category->children as $child):?>
-                            <option value="<?=$child->get('objectId')?>"><?=$child->get('title')?></option>
+                            <option value="<?=$child->get('objectId')?>" <?=$goods->get('category')->get('objectId') == $child->get('objectId') ? 'selected' : ''?>><?=$child->get('title')?></option>
                           <?php endforeach;?>
                         </optgroup>
                       <?php endforeach;?>
@@ -59,10 +59,10 @@
                   <label for="isHot" class="col-sm-2 control-label">推荐</label>
                   <div class="col-sm-8">
                     <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-primary active">
-                        <input type="radio" name="isHot" value="1" id="option1" autocomplete="off" checked> 推荐
+                      <label class="btn btn-primary <?=$goods->get('isHot') == true ? 'active' : ''?>">
+                        <input type="radio" name="isHot" value="1" id="option1" autocomplete="off"> 推荐
                       </label>
-                      <label class="btn btn-primary">
+                      <label class="btn btn-primary <?=$goods->get('isHot') == false ? 'active' : ''?>">
                         <input type="radio" name="isHot" value="0" id="option3" autocomplete="off"> 不推荐
                       </label>
                     </div>
@@ -72,11 +72,11 @@
                   <label for="isNew" class="col-sm-2 control-label">新品</label>
                   <div class="col-sm-8">
                     <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-primary active">
-                        <input type="radio" name="isNew" value="1" id="option1" autocomplete="off" checked> 新品
+                      <label class="btn btn-primary  <?=$goods->get('isNew') == true ? 'active' : ''?>">
+                        <input type="radio" name="isNew" value="1" autocomplete="off"> 新品
                       </label>
-                      <label class="btn btn-primary">
-                        <input type="radio" name="isNew" value="0" id="option3" autocomplete="off"> 非新品
+                      <label class="btn btn-primary <?=$goods->get('isNew') == false ? 'active' : ''?>">
+                        <input type="radio" name="isNew" value="0" autocomplete="off"> 非新品
                       </label>
                     </div>
                   </div>
