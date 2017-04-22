@@ -27,7 +27,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="box-body">
-              <form class="form-horizontal" action="update" method="post">
+              <form id="edit-form" class="form-horizontal" action="update" method="post">
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
@@ -85,6 +85,39 @@
                 <div class="form-group">
                   <label for="fileList" class="col-sm-2 control-label">产品图</label>
                   <div class="col-sm-8">
+                    <div class="row">
+                        <style type="text/css">
+                          .image {
+                            width: 100%;
+                          }
+                          .mask {
+                            position: absolute;
+                            width: 100%;
+                            height: 15%;
+                            background: #eee;
+                            opacity: 0.8;
+                            bottom: 0;
+                            left: 0;
+                          }
+                          .fa-block {
+                            display: block;
+                            margin-top: 2px;
+                          }
+                          .gallery {
+                            border: 1px solid #eee;
+                            border-radius: 3px;
+                            margin-left: 4px;
+                            margin-right: 4px;
+                          }
+                        </style>
+                        <?php $i = 0;?>
+                        <?php foreach ($goods->get('images') as $image):?>
+                          <div class="col-md-3 gallery">
+                              <img class="image" src="<?=$image?>" />
+                              <div class="mask"><i class="fa fa-2x fa-block fa-trash-o text-center"></i></div>
+                          </div>
+                        <?php endforeach;?>
+                    </div>
                     <div id="uploader-demo">
                       <!--用来存放item-->
                       <div id="imagesList" class="uploader-list"></div>
@@ -93,7 +126,7 @@
                           <button id="ctlBtn" type="button" class="hidden btn btn-default">开始上传</button>
                       </div>
                       <!-- input控件用于保存详情图片的url -->
-                      <input type="hidden" name="images" value="" id="images" />
+                      <input type="hidden" name="images" value="[]" id="images" />
                     </div>
                   </div>
                 </div>
@@ -135,5 +168,23 @@
             </form>
           </div>
   </section>
+  <script type="text/javascript">
+    var origin_images = <?=json_encode($goods->get('images'))?>;
+    $('.mask').click(function () {
+      // 当前图片url路径
+      var url = $(this).parent().find('img').attr('src');
+      // 查找出数组元素索引，并移除它，之所以这么做，是因为由于splice会改会数组索引。
+      origin_images.splice(url.indexOf(origin_images), 1);
+      $(this).parent().remove();
+    });
+
+    $('#edit-form').submit(function (e) {
+      // 渲染回#images控件，用于post传值
+      var images_control_value = JSON.parse($('#images').val());
+      var new_images = images_control_value.concat(origin_images);
+      $('#images').val(JSON.stringify(new_images));
+        e.submit();
+      });
+  </script>
   <!-- /.content -->
 </div>
