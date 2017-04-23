@@ -86,37 +86,36 @@
                 <!-- upload images -->
                 <div class="form-group">
                   <label for="fileList" class="col-sm-2 control-label">产品图</label>
+                  <style type="text/css">
+                    .image {
+                      width: 100%;
+                    }
+                    .mask {
+                      position: absolute;
+                      width: 100%;
+                      height: 15%;
+                      background: #eee;
+                      opacity: 0.8;
+                      bottom: 0;
+                      left: 0;
+                    }
+                    .fa-block {
+                      display: block;
+                      margin-top: 2px;
+                    }
+                    .gallery {
+                      border: 1px solid #eee;
+                      border-radius: 3px;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                    }
+                  </style>
                   <div class="col-sm-8">
                     <div class="row">
-                        <style type="text/css">
-                          .image {
-                            width: 100%;
-                          }
-                          .mask {
-                            position: absolute;
-                            width: 100%;
-                            height: 15%;
-                            background: #eee;
-                            opacity: 0.8;
-                            bottom: 0;
-                            left: 0;
-                          }
-                          .fa-block {
-                            display: block;
-                            margin-top: 2px;
-                          }
-                          .gallery {
-                            border: 1px solid #eee;
-                            border-radius: 3px;
-                            margin-left: 4px;
-                            margin-right: 4px;
-                          }
-                        </style>
-                        <?php $i = 0;?>
                         <?php foreach ($goods->get('images') as $image):?>
                           <div class="col-md-3 gallery">
                               <img class="image" src="<?=$image?>" />
-                              <div class="mask"><i class="fa fa-2x fa-block fa-trash-o text-center"></i></div>
+                              <div class="mask" data-type="images"><i class="fa fa-2x fa-block fa-trash-o text-center"></i></div>
                           </div>
                         <?php endforeach;?>
                     </div>
@@ -125,7 +124,7 @@
                       <div id="imagesList" class="uploader-list"></div>
                       <div class="btns">
                         <div id="imagesPicker">选择图片</div>
-                          <button id="ctlBtn" type="button" class="hidden btn btn-default">开始上传</button>
+                          <!-- <button id="ctlBtn" type="button" class="hidden btn btn-default">开始上传</button> -->
                       </div>
                       <!-- input控件用于保存详情图片的url -->
                       <input type="hidden" name="images" value="[]" id="images" />
@@ -136,6 +135,23 @@
                 <div class="form-group">
                   <label for="fileList" class="col-sm-2 control-label">描述图</label>
                   <div class="col-sm-8">
+                    <!-- 原描述图 -->
+                    <div class="row">
+                        <?php foreach ($goods->get('detail') as $image):?>
+                          <div class="col-md-3 gallery">
+                              <img class="image" src="<?=$image?>" />
+                              <div class="mask" data-type="detail"><i class="fa fa-2x fa-block fa-trash-o text-center"></i></div>
+                          </div>
+                        <?php endforeach;?>
+                    </div>
+                    <div id="uploader-demo">
+                      <!--用来存放item-->
+                      <div id="imagesList" class="uploader-list"></div>
+                      <div class="btns">
+                        <div id="imagesPicker">选择图片</div>
+                          <!-- <button id="ctlBtn" type="button" class="hidden btn btn-default">开始上传</button> -->
+                      </div>
+                    </div>
                     <div id="uploader">
                       <div class="queueList">
                         <div id="dndArea" class="placeholder">
@@ -154,7 +170,7 @@
                       </div>
                     </div>
                     <!-- input控件用于保存详情图片的url -->
-                    <input type="hidden" name="detail" value="" id="detail" />
+                    <input type="hidden" name="detail" value="[]" id="detail" />
 
                     <!-- .upload -->
                   </div>
@@ -172,11 +188,15 @@
   </section>
   <script type="text/javascript">
     var origin_images = <?=json_encode($goods->get('images'))?>;
+    var origin_detail = <?=json_encode($goods->get('detail'))?>;
     $('.mask').click(function () {
       // 当前图片url路径
       var url = $(this).parent().find('img').attr('src');
+      console.log($(this).attr('data-type'));
+      var target = $(this).attr('data-type') == 'images' ? origin_images : origin_detail;
       // 查找出数组元素索引，并移除它，之所以这么做，是因为由于splice会改会数组索引。
-      origin_images.splice(url.indexOf(origin_images), 1);
+      target.splice(url.indexOf(target), 1);
+      // console.log(origin_detail);
       $(this).parent().remove();
     });
 
@@ -185,7 +205,12 @@
       var images_control_value = JSON.parse($('#images').val());
       var new_images = images_control_value.concat(origin_images);
       $('#images').val(JSON.stringify(new_images));
-      });
+
+      // 渲染回#detail控件，用于post传值
+      var detail_control_value = JSON.parse($('#detail').val());
+      var new_detail = detail_control_value.concat(origin_detail);
+      $('#detail').val(JSON.stringify(new_detail));
+    });
   </script>
   <!-- /.content -->
 </div>

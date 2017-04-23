@@ -6,7 +6,7 @@ $(function() {
   /* 配置 */
   var config = {
     // 选完文件后，是否自动上传。
-    auto: false,
+    auto: true,
     // swf文件路径
     swf: '/bower_components/fex-webuploader/dist/Uploader.swf',
     // 文件接收服务端。
@@ -180,6 +180,7 @@ $(function() {
 
   // 实例化
   uploader = WebUploader.create({
+      auto: true,
       pick: {
           id: '#filePicker',
           label: '点击选择图片'
