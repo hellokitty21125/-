@@ -93,7 +93,7 @@
                           <button id="ctlBtn" type="button" class="hidden btn btn-default">开始上传</button>
                       </div>
                       <!-- input控件用于保存详情图片的url -->
-                      <input type="hidden" name="images" value="" id="images" />
+                      <input type="hidden" name="images" value="[]" id="images" />
                     </div>
                   </div>
                 </div>
@@ -119,7 +119,7 @@
                       </div>
                     </div>
                     <!-- input控件用于保存详情图片的url -->
-                    <input type="hidden" name="detail" value="" id="detail" />
+                    <input type="hidden" name="detail" value="[]" id="detail" />
 
                     <!-- .upload -->
                   </div>

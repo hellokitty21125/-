@@ -38,7 +38,7 @@ class Goods extends AdminController {
 		$images = $this->input->post('images');
 		$detail = $this->input->post('detail');
 		// 主图是第一个产品图
-		$avatar = json_decode($images)[0];
+		$avatar = sizeof(json_decode($images)) > 0 ? json_decode($images)[0] : null;
 		// save to leanCloud
 		$object = new Object("Goods");
 		$objectId = $this->input->post('objectId'); 
@@ -74,18 +74,6 @@ class Goods extends AdminController {
 			$this->layout->view('goods/msg', $data);
 		}
 	}
-
-	public function update() {
-		$images = $this->input->post('images');
-		var_dump($images);
-	}
-
-	// 商品列表-element
-	// public function index() {
-		// $data['title'] = '商品列表';
-		// $data['js'] = 'goods/index';
-		// $this->layout->view('goods/index', $data);
-	// }
 
 	// 商品列表-adminlte
 	public function index() {
