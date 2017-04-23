@@ -27,7 +27,9 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="box-body">
-              <form id="edit-form" class="form-horizontal" action="update" method="post">
+              <form id="edit-form" class="form-horizontal" action="save" method="post">
+                <!-- objectId for goods id -->
+                <input type="hidden" name="objectId" value="<?=$goods->get('objectId')?>">
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
@@ -183,7 +185,6 @@
       var images_control_value = JSON.parse($('#images').val());
       var new_images = images_control_value.concat(origin_images);
       $('#images').val(JSON.stringify(new_images));
-        e.submit();
       });
   </script>
   <!-- /.content -->

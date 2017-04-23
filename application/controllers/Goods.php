@@ -41,6 +41,13 @@ class Goods extends AdminController {
 		$avatar = json_decode($images)[0];
 		// save to leanCloud
 		$object = new Object("Goods");
+		$objectId = $this->input->post('objectId'); 
+		if (isset($objectId)) {
+			// 编辑产品
+			$object = Object::create('Goods', $objectId);
+			$data['redirect'] = 'index';
+			$data['msg'] = '修改成功';
+		}
 		$object->set("title", $title);
 		$object->set("avatar", $avatar);
 		// 将category转为LeanCloud对象
