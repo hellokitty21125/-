@@ -84,8 +84,8 @@
 	new Vue({
 		el: '#login',
 		data: {
-			username: '',
-			password: '',
+			username: 'lendoo',
+			password: 'lendoo888',
 			loading: false
 		},
 		methods: {
