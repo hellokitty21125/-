@@ -6,6 +6,10 @@
 <!-- Select2 -->
 <link rel="stylesheet" href="/bower_components/AdminLTE/plugins/select2/select2.min.css">
 <script src="/bower_components/AdminLTE/plugins/select2/select2.full.min.js"></script>
+<!-- 表单验证 -->
+<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.min.js"></script>
+<link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -27,7 +31,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="box-body">
-              <form class="form-horizontal" action="save" method="post">
+              <form id="edit-form" class="form-horizontal" action="save" method="post">
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
@@ -37,7 +41,7 @@
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">分类</label>
                   <div class="col-sm-8">
-                    <select class="form-control select2" style="width: 100%;" name="category">
+                    <select class="form-control select2" style="width: 100%;" name="category" id="category">
                       <option></option>
                       <?php foreach ($categories as $category):?>
                         <optgroup label="<?=$category->get('title')?>">
@@ -135,5 +139,48 @@
             </form>
           </div>
   </section>
+  <script type="text/javascript">
+  // 表单验证
+  $('#edit-form').bootstrapValidator({
+     message: '输入不正确',
+     feedbackIcons: {
+       valid: 'glyphicon glyphicon-ok',
+       invalid: 'glyphicon glyphicon-remove',
+       validating: 'glyphicon glyphicon-refresh'
+     },
+     fields: {
+      title: {
+       validators: {
+         notEmpty: {
+           message: '标题不能为空'
+         }
+       }
+     },
+     price: {
+       validators: {
+         notEmpty: {
+           message: '价格不能为空'
+         }
+       }
+     },
+     category: {
+       validators: {
+         notEmpty: {
+           message: '分类不能为空'
+         }
+       }
+     }
+   }
+  });
+  $('#edit-form').submit(function (e) {
+    $('#edit-form').bootstrapValidator('validate');
+    if ($('#images').val() == '[]') {
+      alert('请上传产品图片');
+    }
+    if ($('#detail').val() == '[]') {
+      alert('请上传描述图');
+    }
+  });
+  </script>
   <!-- /.content -->
 </div>
