@@ -63,10 +63,10 @@
                   <label for="isHot" class="col-sm-2 control-label">推荐</label>
                   <div class="col-sm-8">
                     <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-primary active">
+                      <label class="btn btn-default active">
                         <input type="radio" name="isHot" value="1" id="option1" autocomplete="off" checked> 推荐
                       </label>
-                      <label class="btn btn-primary">
+                      <label class="btn btn-default">
                         <input type="radio" name="isHot" value="0" id="option3" autocomplete="off"> 不推荐
                       </label>
                     </div>
@@ -76,10 +76,10 @@
                   <label for="isNew" class="col-sm-2 control-label">新品</label>
                   <div class="col-sm-8">
                     <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-primary active">
+                      <label class="btn btn-default active">
                         <input type="radio" name="isNew" value="1" id="option1" autocomplete="off" checked> 新品
                       </label>
-                      <label class="btn btn-primary">
+                      <label class="btn btn-default">
                         <input type="radio" name="isNew" value="0" id="option3" autocomplete="off"> 非新品
                       </label>
                     </div>

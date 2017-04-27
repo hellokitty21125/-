@@ -61,10 +61,10 @@
                   <label for="isHot" class="col-sm-2 control-label">推荐</label>
                   <div class="col-sm-8">
                     <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-primary <?=$goods->get('isHot') == true ? 'active' : ''?>">
+                      <label class="btn btn-default <?=$goods->get('isHot') == true ? 'active' : ''?>">
                         <input type="radio" name="isHot" value="1" id="option1" autocomplete="off"> 推荐
                       </label>
-                      <label class="btn btn-primary <?=$goods->get('isHot') == false ? 'active' : ''?>">
+                      <label class="btn btn-default <?=$goods->get('isHot') == false ? 'active' : ''?>">
                         <input type="radio" name="isHot" value="0" id="option3" autocomplete="off"> 不推荐
                       </label>
                     </div>
@@ -74,10 +74,10 @@
                   <label for="isNew" class="col-sm-2 control-label">新品</label>
                   <div class="col-sm-8">
                     <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-primary  <?=$goods->get('isNew') == true ? 'active' : ''?>">
+                      <label class="btn btn-default  <?=$goods->get('isNew') == true ? 'active' : ''?>">
                         <input type="radio" name="isNew" value="1" autocomplete="off"> 新品
                       </label>
-                      <label class="btn btn-primary <?=$goods->get('isNew') == false ? 'active' : ''?>">
+                      <label class="btn btn-default <?=$goods->get('isNew') == false ? 'active' : ''?>">
                         <input type="radio" name="isNew" value="0" autocomplete="off"> 非新品
                       </label>
                     </div>
