@@ -10,7 +10,9 @@
 <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/js/language/zh_CN.min.js"></script>
 <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.css" rel="stylesheet">
-
+<!-- sweet alet -->
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -35,7 +37,7 @@
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入商品的标题">
+                    <input type="text" class="form-control" name="title" id="title" placeholder="请输入商品的标题" value="">
                   </div>
                 </div>
                 <div class="form-group">
@@ -56,7 +58,7 @@
                 <div class="form-group">
                   <label for="price" class="col-sm-2 control-label">价格</label>
                   <div class="col-sm-8">
-                    <input type="number" class="form-control" name="price" id="price" placeholder="0.0">
+                    <input type="number" class="form-control" name="price" id="price" placeholder="0.0" step="0.01" value="">
                   </div>
                 </div>
                 <div class="form-group">
@@ -87,14 +89,14 @@
                 </div>
                 <!-- upload images -->
                 <div class="form-group">
-                  <label for="fileList" class="col-sm-2 control-label">产品图</label>
+                  <label for="images" class="col-sm-2 control-label">产品图</label>
                   <div class="col-sm-8">
                     <div id="uploader-demo">
                       <!--用来存放item-->
                       <div id="imagesList" class="uploader-list"></div>
                       <div class="btns">
                         <div id="imagesPicker">选择图片</div>
-                          <button id="ctlBtn" type="button" class="hidden btn btn-default">开始上传</button>
+                          <!-- <button id="ctlBtn" type="button" class="hidden btn btn-default">开始上传</button> -->
                       </div>
                       <!-- input控件用于保存详情图片的url -->
                       <input type="hidden" name="images" value="[]" id="images" />
@@ -103,7 +105,7 @@
                 </div>
                 <!-- upload detail -->
                 <div class="form-group">
-                  <label for="fileList" class="col-sm-2 control-label">描述图</label>
+                  <label for="detail" class="col-sm-2 control-label">描述图</label>
                   <div class="col-sm-8">
                     <div id="uploader">
                       <div class="queueList">
@@ -140,46 +142,94 @@
           </div>
   </section>
   <script type="text/javascript">
-  // 表单验证
-  $('#edit-form').bootstrapValidator({
-     message: '输入不正确',
-     feedbackIcons: {
-       valid: 'glyphicon glyphicon-ok',
-       invalid: 'glyphicon glyphicon-remove',
-       validating: 'glyphicon glyphicon-refresh'
-     },
-     fields: {
-      title: {
-       validators: {
-         notEmpty: {
-           message: '标题不能为空'
+  $(function() {
+    $('#submit').click(function (e) {
+      // $('#edit-form').submit();return;
+      $('#edit-form').bootstrapValidator({
+        // live: 'disabled',
+         message: '输入不正确',
+         feedbackIcons: {
+           valid: 'glyphicon glyphicon-ok',
+           invalid: 'glyphicon glyphicon-remove',
+           validating: 'glyphicon glyphicon-refresh'
+         },
+         fields: {
+          title: {
+           validators: {
+             notEmpty: {
+               message: '标题不能为空'
+             }
+           }
+         },
+         price: {
+           validators: {
+             notEmpty: {
+               message: '价格不能为空'
+             }
+           }
+         },
+         category: {
+           validators: {
+             notEmpty: {
+               message: '分类不能为空'
+             }
+           }
+         },
+         images: {
+           validators: {
+             regexp: {
+                 regexp: /^\[.+\]$/,
+                 message: '请上传产品图'
+             }
+           }
+         },
+         detail: {
+           validators: {
+             regexp: {
+                 regexp: /^\[.+\]$/,
+                 message: '请上传描述图'
+             }
+           }
          }
        }
-     },
-     price: {
-       validators: {
-         notEmpty: {
-           message: '价格不能为空'
-         }
-       }
-     },
-     category: {
-       validators: {
-         notEmpty: {
-           message: '分类不能为空'
-         }
-       }
+      });
+      ;
+      var bootstrapValidator = $("#edit-form").data('bootstrapValidator');
+      bootstrapValidator.validate();
+      if(bootstrapValidator.isValid()) {
+        if ($('#images').val() == '[]') {
+          sweetAlert("提示", "请上传产品图", "error");
+          return;
+        }
+        if ($('#detail').val() == '[]') {
+          sweetAlert("提示", "请上传描述图", "error");
+          return;
+        }
+       console.log('valid');
+       $.post(
+          'save',
+          {
+            title: $('#title').val(),
+            category: $('#category').val(),
+            price: $('#price').val(),
+            images: $('#images').val(),
+            detail: $('#detail').val()
+          },
+          function (resposne) {
+            sweetAlert("提示", resposne.message, "success");
+            if (resposne.success) {
+              $('#edit-form').data('bootstrapValidator').resetForm();
+              $('#title').val("");
+              $('#price').val("");
+              $('#images').val("[]");
+              $('#detail').val("[]");
+            }
+          }
+        );
+     } else {
+      console.log('invalid');
      }
-   }
-  });
-  $('#edit-form').submit(function (e) {
-    $('#edit-form').bootstrapValidator('validate');
-    if ($('#images').val() == '[]') {
-      alert('请上传产品图片');
-    }
-    if ($('#detail').val() == '[]') {
-      alert('请上传描述图');
-    }
+    });
   });
   </script>
   <!-- /.content -->
