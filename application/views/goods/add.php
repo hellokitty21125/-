@@ -215,9 +215,9 @@
             images: $('#images').val(),
             detail: $('#detail').val()
           },
-          function (resposne) {
-            sweetAlert("提示", resposne.message, "success");
-            if (resposne.success) {
+          function (response) {
+            sweetAlert("提示", response.message, "success");
+            if (response.success) {
               $('#edit-form').data('bootstrapValidator').resetForm();
               $('#title').val("");
               $('#price').val("");

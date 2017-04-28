@@ -6,6 +6,9 @@
 <!-- Select2 -->
 <link rel="stylesheet" href="/bower_components/AdminLTE/plugins/select2/select2.min.css">
 <script src="/bower_components/AdminLTE/plugins/select2/select2.full.min.js"></script>
+<!-- sweet alet -->
+<script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -29,7 +32,7 @@
             <div class="box-body">
               <form id="edit-form" class="form-horizontal" action="save" method="post">
                 <!-- objectId for goods id -->
-                <input type="hidden" name="objectId" value="<?=$goods->get('objectId')?>">
+                <input type="hidden" name="objectId" value="<?=$goods->get('objectId')?>" id="objectId">
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">标题</label>
                   <div class="col-sm-8">
@@ -39,7 +42,7 @@
                 <div class="form-group">
                   <label for="title" class="col-sm-2 control-label">分类</label>
                   <div class="col-sm-8">
-                    <select class="form-control select2" style="width: 100%;" name="category">
+                    <select class="form-control select2" style="width: 100%;" name="category" id="category">
                       <option></option>
                       <?php foreach ($categories as $category):?>
                         <optgroup label="<?=$category->get('title')?>">
@@ -210,6 +213,21 @@
       var detail_control_value = JSON.parse($('#detail').val());
       var new_detail = detail_control_value.concat(origin_detail);
       $('#detail').val(JSON.stringify(new_detail));
+      e.preventDefault();
+      $.post(
+        'save',
+        {
+          objectId: $('#objectId').val(),
+          title: $('#title').val(),
+          category: $('#category').val(),
+          price: $('#price').val(),
+          images: $('#images').val(),
+          detail: $('#detail').val()
+        },
+        function (response) {
+           sweetAlert("提示", response.message, "success");
+        }  
+      );
     });
   </script>
   <!-- /.content -->
