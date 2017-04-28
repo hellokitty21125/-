@@ -64,7 +64,7 @@
                 <div class="form-group">
                   <label for="isHot" class="col-sm-2 control-label">推荐</label>
                   <div class="col-sm-8">
-                    <div class="btn-group" data-toggle="buttons">
+                    <div class="btn-group" id="isHot" data-toggle="buttons">
                       <label class="btn btn-default active">
                         <input type="radio" name="isHot" value="1" id="option1" autocomplete="off" checked> 推荐
                       </label>
@@ -77,12 +77,12 @@
                 <div class="form-group">
                   <label for="isNew" class="col-sm-2 control-label">新品</label>
                   <div class="col-sm-8">
-                    <div class="btn-group" data-toggle="buttons">
+                    <div class="btn-group" id="isNew" data-toggle="buttons">
                       <label class="btn btn-default active">
-                        <input type="radio" name="isNew" value="1" id="option1" autocomplete="off" checked> 新品
+                        <input type="radio" name="isNew" value="1" autocomplete="off"> 新品
                       </label>
                       <label class="btn btn-default">
-                        <input type="radio" name="isNew" value="0" id="option3" autocomplete="off"> 非新品
+                        <input type="radio" name="isNew" value="0" autocomplete="off"> 非新品
                       </label>
                     </div>
                   </div>
@@ -212,6 +212,8 @@
             title: $('#title').val(),
             category: $('#category').val(),
             price: $('#price').val(),
+            isNew: $('#isNew .active input').val(),
+            isHot: $('#isHot .active input').val(),
             images: $('#images').val(),
             detail: $('#detail').val()
           },
