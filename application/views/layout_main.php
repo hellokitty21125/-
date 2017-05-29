@@ -335,6 +335,7 @@
             </a>
             <ul class="treeview-menu">
               <li class="<?=uri_string() == 'manager/profile' ? 'active' : ''?>"><a href="../manager/profile"><i class="fa fa-user"></i> 修改资料</a></li>
+              <li class="<?=uri_string() == 'praise/index' ? 'active' : ''?>"><a href="../donate/index"><i class="fa fa-user"></i> 赞赏记录</a></li>
             </ul>
           </li>
         </ul>
