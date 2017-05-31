@@ -28,9 +28,10 @@
                 <thead>
                   <tr>
                     <!-- 读取大类名称 -->
+                    <th><img width="50" src="<?=$category->get('avatar')->get('url');?>" /></th>
                     <th style="width: 60%;"><?=$category->get('title')?></th>
-                    <th><a type="button" class="btn btn-primary" href="add?objectId=<?=$category->get('objectId')?>">添加</a></th>
-                    <th><a type="button" class="btn btn-info" href="edit?objectId=<?=$category->get('objectId')?>">修改</a></th>
+                    <th><a type="button" class="btn btn-primary<?=$category->get('isLock') == true ? ' disabled' : ''?>" href="add?objectId=<?=$category->get('objectId')?>">添加</a></th>
+                    <th><a type="button" class="btn btn-info<?=$category->get('isLock') == true ? ' disabled' : ''?>" href="edit?objectId=<?=$category->get('objectId')?>">修改</a></th>
                     <th><a type="button" class="btn btn-danger delete<?=$category->get('isLock') == true ? ' disabled' : ''?>" href="delete?objectId=<?=$category->get('objectId')?>">删除</a></th>
 
                   </tr>
@@ -39,14 +40,15 @@
                   <!-- 遍历子类 -->
                   <?php foreach ($category->children as $child):?>
                   <tr>
+                    <td><img width="50" src="<?=$child->get('avatar')->get('url');?>" /></td>
                     <td>
                       <div class="col-xs-offset-2"><?=$child->get('title')?></div>
                     </td>
                     <td>
-                      <a type="button" class="btn btn-primary" href="add?objectId=<?=$child->get('objectId')?>">添加</a>
+                      <a type="button" class="btn btn-primary<?=$child->get('isLock') == true ? ' disabled' : ''?>" href="add?objectId=<?=$child->get('objectId')?>">添加</a>
                     </td>
                     <td>
-                      <a type="button" class="btn btn-info" href="edit?objectId=<?=$child->get('objectId')?>">修改</a>
+                      <a type="button" class="btn btn-info<?=$child->get('isLock') == true ? ' disabled' : ''?>" href="edit?objectId=<?=$child->get('objectId')?>">修改</a>
                     </td>
                     <td>
                       <a type="button" class="btn btn-danger delete<?=$child->get('isLock') == true ? ' disabled' : ''?>" href="delete?objectId=<?=$child->get('objectId')?>">删除</a>
