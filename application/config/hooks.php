@@ -23,7 +23,7 @@ Cloud::define("pay", function($params, $user) {
 	$input->SetOut_trade_no($params['tradeNo']);
 	// 		费用应该是由小程序端传给服务端的，在用户下单时告知服务端应付金额，demo中取值是1，即1分钱
 	$input->SetTotal_fee($params['totalFee']);
-	$input->SetNotify_url("http://paysdk.weixin.qq.com/example/notify.php");
+	$input->SetNotify_url("https://lendoo.leanapp.cn/WXPay/notify");
 	$input->SetTrade_type("JSAPI");
 	// 		由小程序端传给服务端
 	$input->SetOpenid($openid);
