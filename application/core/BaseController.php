@@ -7,10 +7,11 @@ use \LeanCloud\Storage\CookieStorage;
 class BaseController extends CI_Controller {
 	function __construct() {
 		parent::__construct();
+		// 已废弃，已改用云函数实现，详见：http://blog.it577.net/index.php/archives/7/
 		// 参数依次为 AppId, AppKey, MasterKey
-		Client::initialize("SgHcsYqoLaFTG0XDMD3Gtm0I-gzGzoHsz", "xdv2nwjUK5waNglFoFXkQcxP" ,"v3P5xzDa0b5CStO0xX0biHpT");
-		Client::useMasterKey(true);
-		Client::setStorage(new CookieStorage());
+		// Client::initialize("SgHcsYqoLaFTG0XDMD3Gtm0I-gzGzoHsz", "xdv2nwjUK5waNglFoFXkQcxP" ,"v3P5xzDa0b5CStO0xX0biHpT");
+		// Client::useMasterKey(true);
+		// Client::setStorage(new CookieStorage());
 	}
 
 	// 格式化输出

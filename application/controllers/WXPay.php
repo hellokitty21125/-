@@ -2,7 +2,8 @@
 require_once __DIR__ . '/../third_party/wxpay/WxPay.Api.php';
 
 class WXPay extends BaseController {
-	// pay order
+	// pay order 
+	// 此函数即将废弃，已改用云函数实现，详见：http://blog.it577.net/index.php/archives/7/
 	function index() {
 		// 		初始化值对象
 		$input = new WxPayUnifiedOrder();
@@ -44,6 +45,7 @@ class WXPay extends BaseController {
 	}
 	
 	// get openid & session_key
+	// 此函数即将废弃，已改用云函数实现，详见：http://blog.it577.net/index.php/archives/7/
 	public function getSession() {
 		$code = $this->input->post('code');
 		$url = 'https://api.weixin.qq.com/sns/jscode2session?appid='.WxPayConfig::APPID.'&secret='.WxPayConfig::APPSECRET.'&js_code='.$code.'&grant_type=authorization_code';
